@@ -14,7 +14,9 @@ const gameState = {
     isSpinning: false,
     timer: null,
     timeLeft: 20,
-    currentRotation: 0  // Ángulo actual de la ruleta en grados
+    currentRotation: 0,  // Ángulo actual de la ruleta en grados
+    correctModalIndex: 0,  // Índice para alternar modales de respuesta correcta
+    incorrectModalIndex: 0  // Índice para alternar modales de respuesta incorrecta
 };
 
 // ============================================
@@ -777,10 +779,10 @@ function checkAnswer(selectedIndex, correctIndex) {
     const feedbackAvatar = document.getElementById('feedback-avatar');
     
     if (selectedIndex === correctIndex) {
-        // Respuesta correcta - alternar entre dos modales
+        // Respuesta correcta - alternar secuencialmente entre modales
         playSound('correct');
         
-        // Alternar aleatoriamente entre tres mensajes e imágenes
+        // Array de opciones de respuesta correcta
         const correctOptions = [
             {
                 message: 'Correcto, vamos a meameeee',
@@ -796,19 +798,21 @@ function checkAnswer(selectedIndex, correctIndex) {
             }
         ];
         
-        const randomOption = correctOptions[Math.floor(Math.random() * correctOptions.length)];
+        // Seleccionar el modal según el índice actual y luego incrementar
+        const selectedOption = correctOptions[gameState.correctModalIndex];
+        gameState.correctModalIndex = (gameState.correctModalIndex + 1) % correctOptions.length;
         
-        feedbackText.textContent = randomOption.message;
+        feedbackText.textContent = selectedOption.message;
         feedbackContent.className = 'modal-content feedback-modal-content correct';
-        feedbackAvatar.src = randomOption.image;
+        feedbackAvatar.src = selectedOption.image;
         feedbackAvatar.style.display = 'block';
         gameState.points += 100 * gameState.level;
         gameState.correctAnswers++;
     } else {
-        // Respuesta incorrecta - alternar entre dos modales
+        // Respuesta incorrecta - alternar secuencialmente entre modales
         playSound('incorrect');
         
-        // Alternar aleatoriamente entre dos mensajes e imágenes
+        // Array de opciones de respuesta incorrecta
         const incorrectOptions = [
             {
                 message: 'INCORRECTO',
@@ -820,11 +824,13 @@ function checkAnswer(selectedIndex, correctIndex) {
             }
         ];
         
-        const randomOption = incorrectOptions[Math.floor(Math.random() * incorrectOptions.length)];
+        // Seleccionar el modal según el índice actual y luego incrementar
+        const selectedOption = incorrectOptions[gameState.incorrectModalIndex];
+        gameState.incorrectModalIndex = (gameState.incorrectModalIndex + 1) % incorrectOptions.length;
         
-        feedbackText.textContent = randomOption.message;
+        feedbackText.textContent = selectedOption.message;
         feedbackContent.className = 'modal-content feedback-modal-content incorrect';
-        feedbackAvatar.src = randomOption.image;
+        feedbackAvatar.src = selectedOption.image;
         feedbackAvatar.style.display = 'block';
         loseLife();
     }
@@ -981,6 +987,8 @@ function resetGame() {
     gameState.currentCategory = null;
     gameState.isSpinning = false;
     gameState.currentRotation = 0; // Reiniciar la rotación de la ruleta
+    gameState.correctModalIndex = 0;
+    gameState.incorrectModalIndex = 0;
     
     if (gameState.timer) {
         clearInterval(gameState.timer);
