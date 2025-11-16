@@ -363,6 +363,10 @@ function spinWheel() {
     }, 3000);
 }
 
+// ===================================================================
+// =================== ¡INICIO DE LA CORRECCIÓN! ===================
+// ===================================================================
+
 function getCategoryFromAngle(angle) {
     // Normalizar ángulo a 0-360
     const normalizedAngle = ((angle % 360) + 360) % 360;
@@ -370,22 +374,16 @@ function getCategoryFromAngle(angle) {
     // Cada sector tiene 51.42857... grados (360 / 7)
     const sectorSize = 360 / 7; // ≈ 51.42857
     
-    // LÓGICA CORREGIDA Y VERIFICADA:
-    // El indicador (flecha) está arriba apuntando hacia abajo (0° desde arriba, 180° desde el centro).
-    // Cuando la ruleta gira X grados en sentido horario (positivo), todos los sectores rotan X grados.
-    // 
-    // El indicador está fijo en la posición 0° (arriba), pero apunta hacia el sector que está
-    // en 180° (debajo del indicador, en la parte inferior de la ruleta).
+    // LÓGICA CORREGIDA:
+    // Tu indicador (flecha) está ARRIBA (en 0°), no abajo (en 180°).
+    // La lógica correcta es calcular qué sector de la ruleta
+    // ha girado hasta quedar debajo del indicador de 0°.
     //
-    // Si la ruleta giró X grados en sentido horario:
-    // - El sector que estaba en posición Y ahora está en (Y + X) mod 360
-    // - El sector que está ahora en 180° (debajo del indicador) estaba originalmente en (180 - X) mod 360
-    //
-    // Ejemplo: Si la ruleta giró 0°, el sector en 180° es el que estaba en 180°, que es Geografía (sector 3)
-    // Ejemplo: Si la ruleta giró 180°, el sector en 180° es el que estaba en 0°, que es Deportes (sector 0)
+    // Si la ruleta giró X grados, el sector que ATERRIZA en 0°
+    // es el que originalmente estaba en (360 - X)
     
-    // Calcular qué posición original de la ruleta está ahora en 180° (debajo del indicador)
-    const originalPosition = (180 - normalizedAngle + 360) % 360;
+    // Calcular qué posición original de la ruleta está ahora en 0° (debajo del indicador)
+    const landingAngle = (360 - normalizedAngle) % 360;
     
     // Calcular el índice del sector (0-6) basado en la posición original
     // Los sectores del conic-gradient están definidos así:
@@ -400,23 +398,24 @@ function getCategoryFromAngle(angle) {
     // Calcular el sector usando rangos exactos para evitar errores de redondeo
     let sectorIndex;
     
-    if (originalPosition >= 0 && originalPosition < 51.43) {
+    // Usamos la nueva variable 'landingAngle' en lugar de 'originalPosition'
+    if (landingAngle >= 0 && landingAngle < 51.43) {
         sectorIndex = 0; // Deportes ⚽
-    } else if (originalPosition >= 51.43 && originalPosition < 102.86) {
+    } else if (landingAngle >= 51.43 && landingAngle < 102.86) {
         sectorIndex = 1; // Tradiciones 🧉
-    } else if (originalPosition >= 102.86 && originalPosition < 154.29) {
+    } else if (landingAngle >= 102.86 && landingAngle < 154.29) {
         sectorIndex = 2; // Música 🎵
-    } else if (originalPosition >= 154.29 && originalPosition < 205.71) {
+    } else if (landingAngle >= 154.29 && landingAngle < 205.71) {
         sectorIndex = 3; // Geografía 🗺️
-    } else if (originalPosition >= 205.71 && originalPosition < 257.14) {
+    } else if (landingAngle >= 205.71 && landingAngle < 257.14) {
         sectorIndex = 4; // Cine 🎬
-    } else if (originalPosition >= 257.14 && originalPosition < 308.57) {
+    } else if (landingAngle >= 257.14 && landingAngle < 308.57) {
         sectorIndex = 5; // Historia 📜
     } else {
         sectorIndex = 6; // Ciencia 🔬 (308.57° a 360°)
     }
     
-    // Mapear el índice del sector a la categoría correcta según el orden EXACTO del conic-gradient
+    // Mapear el índice del sector a la categoría correcta (este orden ya estaba bien)
     const categoryOrder = [
         'deportes',      // Sector 0: 0°-51.43° (Rojo) ⚽
         'tradiciones',   // Sector 1: 51.43°-102.86° (Amarillo) 🧉
@@ -431,15 +430,20 @@ function getCategoryFromAngle(angle) {
     
     // Validación crítica y logging para depuración
     if (!selectedCategory) {
-        console.error('ERROR CRÍTICO: Categoría no determinada. Ángulo:', normalizedAngle, 'Posición original:', originalPosition, 'Sector:', sectorIndex);
+        console.error('ERROR CRÍTICO: Categoría no determinada. Ángulo giro:', normalizedAngle, 'Ángulo aterrizaje:', landingAngle, 'Sector:', sectorIndex);
         return 'deportes'; // Fallback
     }
     
     // Log para depuración (puedes comentar esto después de verificar que funciona)
-    console.log('Ruleta - Ángulo:', normalizedAngle.toFixed(2), '° | Posición original:', originalPosition.toFixed(2), '° | Sector:', sectorIndex, '| Categoría:', selectedCategory);
+    console.log('Ruleta - Ángulo giro:', normalizedAngle.toFixed(2), '° | Aterrizaje en:', landingAngle.toFixed(2), '° | Sector:', sectorIndex, '| Categoría:', selectedCategory);
     
     return selectedCategory;
 }
+
+// ===================================================================
+// =================== ¡FIN DE LA CORRECCIÓN! =====================
+// ===================================================================
+
 
 function showCategoryModal(categoryId) {
     const category = categories.find(c => c.id === categoryId);
@@ -718,4 +722,3 @@ window.addEventListener('load', () => {
     
     initLoadingScreen();
 });
-
