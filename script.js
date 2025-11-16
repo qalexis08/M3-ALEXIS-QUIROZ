@@ -774,12 +774,15 @@ function checkAnswer(selectedIndex, correctIndex) {
     const feedbackModal = document.getElementById('answer-feedback-modal');
     const feedbackContent = feedbackModal.querySelector('.feedback-modal-content');
     const feedbackText = document.getElementById('feedback-text');
+    const feedbackAvatar = document.getElementById('feedback-avatar');
     
     if (selectedIndex === correctIndex) {
         // Respuesta correcta
         playSound('correct');
-        feedbackText.textContent = '¡Muy bien, compañero!';
+        feedbackText.textContent = 'Correcto, vamos a meameeee';
         feedbackContent.className = 'modal-content feedback-modal-content correct';
+        feedbackAvatar.src = 'fort.png';
+        feedbackAvatar.style.display = 'block';
         gameState.points += 100 * gameState.level;
         gameState.correctAnswers++;
     } else {
@@ -787,6 +790,7 @@ function checkAnswer(selectedIndex, correctIndex) {
         playSound('incorrect');
         feedbackText.textContent = 'Uy, casi casi… Otra vez será.';
         feedbackContent.className = 'modal-content feedback-modal-content incorrect';
+        feedbackAvatar.style.display = 'none';
         loseLife();
     }
     
@@ -794,6 +798,7 @@ function checkAnswer(selectedIndex, correctIndex) {
     
     setTimeout(() => {
         feedbackModal.classList.remove('active');
+        feedbackAvatar.style.display = 'none';
         gameState.currentQuestion++;
         checkLevelProgress();
     }, 2000);

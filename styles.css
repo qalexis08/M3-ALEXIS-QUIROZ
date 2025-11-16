@@ -617,6 +617,25 @@ body {
     padding: 3rem 4rem;
     max-width: 500px;
     animation: feedbackModalAppear 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feedback-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: feedbackAvatarBounce 1s ease-in-out infinite;
+}
+
+@keyframes feedbackAvatarBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-10px) scale(1.05); }
+    50% { transform: translateY(-15px) scale(1.1); }
+    75% { transform: translateY(-10px) scale(1.05); }
 }
 
 .feedback-message {
