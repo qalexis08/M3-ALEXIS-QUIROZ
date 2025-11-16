@@ -410,12 +410,12 @@ body {
 }
 
 .modal-avatar-container {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 .modal-avatar {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
 }
 
