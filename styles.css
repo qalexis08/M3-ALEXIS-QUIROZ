@@ -272,19 +272,19 @@ body {
     justify-content: center;
     pointer-events: none;
     z-index: 2;
-    --radius: 70%;
-    width: 80px;
-    height: 80px;
+    --radius: 78%;
+    width: 70px;
+    height: 70px;
 }
 
 /* Posicionar cada ícono en el centro de su sector, cerca del borde exterior */
 /* Estrategia: 
    1. Mover al centro (translate -50%, -50%)
    2. Rotar al ángulo del sector
-   3. Mover hacia afuera en la dirección del sector (translateY negativo) - 70% del radio
+   3. Mover hacia afuera en la dirección del sector (translateY negativo) - 78% del radio
    4. Rotar de vuelta para mantener el ícono derecho
-   Esto coloca los íconos a aproximadamente 70% del radio desde el centro, 
-   claramente fuera del botón central que ocupa ~25% del radio
+   Esto coloca los íconos a aproximadamente 78% del radio desde el centro, 
+   completamente fuera del botón central que ocupa ~25% del radio
 */
 .wheel-icon {
     transform: translate(-50%, -50%) 
@@ -294,10 +294,10 @@ body {
 }
 
 .icon-emoji {
-    font-size: 4rem;
+    font-size: 3.5rem;
     display: block;
     line-height: 1;
-    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.8));
     width: 1em;
     height: 1em;
     text-align: center;
@@ -313,12 +313,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--azul-intenso) 0%, #003d7a 100%);
     color: var(--blanco);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     border: 5px solid var(--blanco);
     cursor: pointer;
@@ -816,13 +816,13 @@ body {
     }
 
     .wheel-icon {
-        --radius: 65%;
-        width: 70px;
-        height: 70px;
+        --radius: 72%;
+        width: 65px;
+        height: 65px;
     }
 
     .icon-emoji {
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
 
     .spin-button {
@@ -848,13 +848,13 @@ body {
     }
 
     .wheel-icon {
-        --radius: 70%;
-        width: 85px;
-        height: 85px;
+        --radius: 78%;
+        width: 75px;
+        height: 75px;
     }
 
     .icon-emoji {
-        font-size: 4.5rem;
+        font-size: 4rem;
     }
 
     .spin-button {
