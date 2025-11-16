@@ -61,16 +61,16 @@ body {
 
 #loading-screen {
     background: linear-gradient(135deg, var(--celeste-claro) 0%, #87CEEB 100%);
-    padding: 1rem;
+    padding: 2rem;
     box-sizing: border-box;
     overflow: hidden;
 }
 
 .loading-content {
     text-align: center;
-    width: 95%;
-    max-width: 1600px;
-    padding: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
     box-sizing: border-box;
 }
 
@@ -88,9 +88,12 @@ body {
     align-items: center;
     flex-wrap: nowrap;
     margin-bottom: 4rem;
-    gap: 1.2rem;
+    gap: 0.6rem;
     width: 100%;
-    overflow: hidden;
+    max-width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    overflow: visible;
 }
 
 .character-item {
@@ -98,10 +101,11 @@ body {
 }
 
 .character-img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
     animation: bounce 2s infinite;
+    flex-shrink: 0;
 }
 
 .character-item:nth-child(1) .character-img { animation-delay: 0s; }
