@@ -207,12 +207,78 @@ function playSound(type) {
         
         switch(type) {
             case 'spin':
-                oscillator.frequency.value = 200;
-                oscillator.type = 'sine';
-                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 2);
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + 2);
+                // Sonido de ruleta de casino - múltiples capas para realismo
+                const spinDuration = 3; // Duración del giro (coincide con la animación)
+                const currentTime = audioContext.currentTime;
+                
+                // Capa 1: Zumbido base (whirring) - frecuencia baja que disminuye
+                const baseOsc = audioContext.createOscillator();
+                const baseGain = audioContext.createGain();
+                baseOsc.connect(baseGain);
+                baseGain.connect(audioContext.destination);
+                baseOsc.type = 'sawtooth';
+                baseOsc.frequency.setValueAtTime(150, currentTime);
+                baseOsc.frequency.exponentialRampToValueAtTime(80, currentTime + spinDuration);
+                baseGain.gain.setValueAtTime(0.15, currentTime);
+                baseGain.gain.exponentialRampToValueAtTime(0.01, currentTime + spinDuration);
+                baseOsc.start(currentTime);
+                baseOsc.stop(currentTime + spinDuration);
+                
+                // Capa 2: Frecuencia media - efecto de rotación
+                const midOsc = audioContext.createOscillator();
+                const midGain = audioContext.createGain();
+                midOsc.connect(midGain);
+                midGain.connect(audioContext.destination);
+                midOsc.type = 'triangle';
+                midOsc.frequency.setValueAtTime(300, currentTime);
+                midOsc.frequency.exponentialRampToValueAtTime(120, currentTime + spinDuration);
+                midGain.gain.setValueAtTime(0.12, currentTime);
+                midGain.gain.exponentialRampToValueAtTime(0.01, currentTime + spinDuration);
+                midOsc.start(currentTime);
+                midOsc.stop(currentTime + spinDuration);
+                
+                // Capa 3: Clicks rápidos que disminuyen (simula las divisiones de la ruleta)
+                const clickInterval = 0.05; // Intervalo inicial entre clicks (muy rápido)
+                const finalInterval = 0.3; // Intervalo final (más lento)
+                let clickTime = currentTime;
+                let currentInterval = clickInterval;
+                const totalClicks = Math.floor(spinDuration / clickInterval);
+                
+                for (let i = 0; i < totalClicks && clickTime < currentTime + spinDuration; i++) {
+                    const clickOsc = audioContext.createOscillator();
+                    const clickGain = audioContext.createGain();
+                    clickOsc.connect(clickGain);
+                    clickGain.connect(audioContext.destination);
+                    clickOsc.type = 'square';
+                    clickOsc.frequency.value = 800 + Math.random() * 200; // Variación aleatoria
+                    const clickVolume = 0.08 * (1 - (i / totalClicks)); // Disminuye con el tiempo
+                    clickGain.gain.setValueAtTime(clickVolume, clickTime);
+                    clickGain.gain.exponentialRampToValueAtTime(0.001, clickTime + 0.01);
+                    clickOsc.start(clickTime);
+                    clickOsc.stop(clickTime + 0.01);
+                    
+                    // Aumentar el intervalo gradualmente
+                    currentInterval = clickInterval + (finalInterval - clickInterval) * (i / totalClicks);
+                    clickTime += currentInterval;
+                }
+                
+                // Capa 4: Ruido blanco suave para textura
+                const bufferSize = audioContext.sampleRate * spinDuration;
+                const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+                const whiteNoise = audioContext.createBufferSource();
+                const noiseGain = audioContext.createGain();
+                whiteNoise.buffer = noiseBuffer;
+                whiteNoise.connect(noiseGain);
+                noiseGain.connect(audioContext.destination);
+                noiseGain.gain.setValueAtTime(0.03, currentTime);
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, currentTime + spinDuration);
+                whiteNoise.start(currentTime);
+                whiteNoise.stop(currentTime + spinDuration);
+                
                 break;
             case 'correct':
                 oscillator.frequency.value = 523.25; // Do
