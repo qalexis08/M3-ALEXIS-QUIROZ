@@ -797,14 +797,24 @@ document.getElementById('next-level-btn').addEventListener('click', () => {
 // ============================================
 
 function showGameOver(customMessage = null) {
-    const message = customMessage || 'Te quedaste sin vidas. ¡A no aflojar! Volvés a empezar desde el Nivel 1.';
+    const message = customMessage || 'Volvés a empezar desde el Nivel 1.';
     document.getElementById('game-over-message').textContent = message;
     document.getElementById('game-over-level').textContent = gameState.level;
     document.getElementById('game-over-points').textContent = gameState.points;
-    showScreen('game-over-screen');
+    
+    // Seleccionar avatar aleatorio (triste)
+    const avatars = ['hincha.png', 'abuelita_mate.png', 'rockera.png', 'carpincho_mate.png', 'director.png', 'gaucho.png', 'cientifica.png'];
+    const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+    document.getElementById('game-over-avatar').src = randomAvatar;
+    
+    // Mostrar como modal
+    document.getElementById('game-over-modal').classList.add('active');
 }
 
 document.getElementById('restart-btn').addEventListener('click', () => {
+    // Cerrar el modal
+    document.getElementById('game-over-modal').classList.remove('active');
+    
     resetGame();
     showScreen('game-screen');
 });

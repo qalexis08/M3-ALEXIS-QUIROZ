@@ -192,16 +192,24 @@
         </div>
     </div>
 
-    <!-- PANTALLA DE GAME OVER -->
-    <div id="game-over-screen" class="screen">
+    <!-- MODAL DE GAME OVER -->
+    <div id="game-over-modal" class="modal game-over-modal">
         <div class="game-over-content">
-            <h1>Game Over</h1>
-            <p id="game-over-message">Te quedaste sin vidas. ¡A no aflojar! Volvés a empezar desde el Nivel 1.</p>
+            <div class="title-container">
+                <h1 class="game-over-title">😔 <span id="game-over-title-text">Game Over</span></h1>
+                <div class="title-glow-sad"></div>
+            </div>
+            <p class="game-over-subtitle">Se te acabaron las vidas, che. ¡A no aflojar!</p>
+            <div class="game-over-avatar-container">
+                <img id="game-over-avatar" src="hincha.png" alt="Avatar triste" class="game-over-avatar">
+            </div>
             <div class="game-over-stats">
                 <p>Nivel alcanzado: <span id="game-over-level">1</span></p>
                 <p>Puntos totales: <span id="game-over-points">0</span></p>
+                <p id="game-over-message">Volvés a empezar desde el Nivel 1.</p>
             </div>
-            <button id="restart-btn" class="btn btn-primary">Volver a jugar</button>
+            <p class="game-over-hint">No te rindas, la próxima vez seguro llegás más lejos.</p>
+            <button id="restart-btn" class="btn btn-primary btn-large">Volver a jugar</button>
         </div>
     </div>
 
