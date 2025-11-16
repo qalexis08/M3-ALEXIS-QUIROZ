@@ -985,8 +985,8 @@ body {
 }
 
 .game-over-avatar {
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 300px;
     object-fit: contain;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) grayscale(30%) brightness(0.85);
     opacity: 0.8;

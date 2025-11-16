@@ -933,10 +933,8 @@ function showGameOver(customMessage = null) {
     document.getElementById('game-over-level').textContent = gameState.level;
     document.getElementById('game-over-points').textContent = gameState.points;
     
-    // Seleccionar avatar aleatorio (triste)
-    const avatars = ['hincha.png', 'abuelita_mate.png', 'rockera.png', 'carpincho_mate.png', 'director.png', 'gaucho.png', 'cientifica.png'];
-    const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
-    document.getElementById('game-over-avatar').src = randomAvatar;
+    // Usar siempre la imagen guido.png
+    document.getElementById('game-over-avatar').src = 'guido.png';
     
     // Mostrar como modal
     document.getElementById('game-over-modal').classList.add('active');
