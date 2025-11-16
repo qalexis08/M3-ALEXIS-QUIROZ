@@ -343,6 +343,18 @@ function spinWheel() {
         const finalAngle = newRotation % 360;
         const selectedCategory = getCategoryFromAngle(finalAngle);
         
+        // Asegurar que la categoría se asigne correctamente
+        if (!selectedCategory) {
+            console.error('Error: No se pudo determinar la categoría desde el ángulo:', finalAngle);
+            return;
+        }
+        
+        // Validar que la categoría existe en el banco de preguntas
+        if (!questions[gameState.level] || !questions[gameState.level][selectedCategory]) {
+            console.error('Error: Categoría no encontrada en el banco de preguntas:', selectedCategory);
+            return;
+        }
+        
         gameState.currentCategory = selectedCategory;
         gameState.isSpinning = false;
         spinButton.disabled = false;
@@ -358,23 +370,33 @@ function getCategoryFromAngle(angle) {
     // Cada sector tiene 51.43 grados (360 / 7)
     const sectorSize = 360 / 7;
     
-    // El indicador está arriba (0°). Cuando la ruleta gira, necesitamos saber
-    // qué sector original está ahora debajo del indicador (en 180°).
-    // Si la ruleta giró X grados en sentido horario, el sector que está en 180° ahora
-    // estaba originalmente en (180 - X) mod 360
+    // El indicador está arriba (0°). Cuando la ruleta gira X grados en sentido horario,
+    // todos los sectores se mueven X grados hacia la derecha.
+    // El indicador está fijo en 0° (arriba), así que necesitamos saber qué sector
+    // está ahora en 180° (debajo del indicador).
+    // 
+    // Si la ruleta giró X grados, el sector que está ahora en 180° estaba originalmente
+    // en (180 - X) mod 360
     
     const originalPosition = (180 - normalizedAngle + 360) % 360;
     
     // Calcular el índice del sector (0-6) basado en la posición original
+    // Los sectores en el conic-gradient están así:
+    // Sector 0: 0°-51.43° → Deportes (Rojo)
+    // Sector 1: 51.43°-102.86° → Tradiciones (Amarillo)
+    // Sector 2: 102.86°-154.29° → Música (Púrpura)
+    // Sector 3: 154.29°-205.71° → Geografía (Verde)
+    // Sector 4: 205.71°-257.14° → Cine (Celeste)
+    // Sector 5: 257.14°-308.57° → Historia (Naranja)
+    // Sector 6: 308.57°-360° → Ciencia (Turquesa)
+    
     let sectorIndex = Math.floor(originalPosition / sectorSize);
     
     // Asegurar que esté en el rango 0-6
     sectorIndex = sectorIndex % 7;
     
-    // Mapear a las categorías en orden
-    // Orden: Deportes (0°), Historia (51.43°), Música (102.86°), Geografía (154.29°),
-    //        Cine (205.71°), Tradiciones (257.14°), Ciencia (308.57°)
-    const categoryOrder = ['deportes', 'historia', 'musica', 'geografia', 'cine', 'tradiciones', 'ciencia'];
+    // Mapear el índice del sector a la categoría correcta según el orden del conic-gradient
+    const categoryOrder = ['deportes', 'tradiciones', 'musica', 'geografia', 'cine', 'historia', 'ciencia'];
     return categoryOrder[sectorIndex];
 }
 
@@ -410,6 +432,18 @@ document.getElementById('spin-again-btn').addEventListener('click', () => {
 function startQuestion() {
     const category = gameState.currentCategory;
     const level = gameState.level;
+    
+    // Validar que la categoría esté asignada
+    if (!category) {
+        console.error('Error: No hay categoría seleccionada');
+        return;
+    }
+    
+    // Validar que existan preguntas para esta categoría y nivel
+    if (!questions[level] || !questions[level][category]) {
+        console.error('Error: No hay preguntas para la categoría', category, 'en el nivel', level);
+        return;
+    }
     
     // Obtener preguntas disponibles (no usadas)
     const availableQuestions = questions[level][category].filter(
