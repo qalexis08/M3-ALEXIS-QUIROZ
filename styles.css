@@ -275,17 +275,19 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.6);
     pointer-events: none;
     z-index: 2;
-    --radius: 38%;
+    --radius: 65%;
     width: 100px;
     height: auto;
 }
 
-/* Posicionar cada ícono en el centro de su sector */
+/* Posicionar cada ícono en el centro de su sector, cerca del borde exterior */
 /* Estrategia: 
    1. Mover al centro (translate -50%, -50%)
    2. Rotar al ángulo del sector
-   3. Mover hacia afuera en la dirección del sector (translateY negativo)
+   3. Mover hacia afuera en la dirección del sector (translateY negativo) - 65% del radio
    4. Rotar de vuelta para mantener el texto derecho
+   Esto coloca los íconos a aproximadamente 65% del radio desde el centro, 
+   claramente fuera del botón central que ocupa ~25% del radio
 */
 .wheel-icon {
     transform: translate(-50%, -50%) 
@@ -295,15 +297,15 @@ body {
 }
 
 .icon-emoji {
-    font-size: 3rem;
-    margin-bottom: 0.4rem;
+    font-size: 3.2rem;
+    margin-bottom: 0.5rem;
     display: block;
     line-height: 1;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .icon-label {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: bold;
     text-align: center;
     white-space: nowrap;
@@ -818,16 +820,16 @@ body {
     }
 
     .wheel-icon {
-        --radius: 35%;
+        --radius: 60%;
         width: 80px;
     }
 
     .icon-emoji {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
 
     .icon-label {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 
     .spin-button {
@@ -850,6 +852,18 @@ body {
     .wheel-container {
         width: 500px;
         height: 500px;
+    }
+
+    .wheel-icon {
+        --radius: 65%;
+    }
+
+    .icon-emoji {
+        font-size: 3.4rem;
+    }
+
+    .icon-label {
+        font-size: 1rem;
     }
 
     .spin-button {
