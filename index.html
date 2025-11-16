@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreguntARG - El juego de preguntas argentinas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- PANTALLA DE CARGA -->
+    <div id="loading-screen" class="screen active">
+        <div class="loading-content">
+            <h1 class="game-title">PreguntARG</h1>
+            <div class="characters-container">
+                <div class="character-item">
+                    <img src="hincha.png" alt="Hincha" class="character-img">
+                </div>
+                <div class="character-item">
+                    <img src="abuelita_mate.png" alt="Abuelita" class="character-img">
+                </div>
+                <div class="character-item">
+                    <img src="rockera.png" alt="Rockera" class="character-img">
+                </div>
+                <div class="character-item">
+                    <img src="carpincho_mate.png" alt="Carpincho" class="character-img">
+                </div>
+                <div class="character-item">
+                    <img src="director.png" alt="Director" class="character-img">
+                </div>
+                <div class="character-item">
+                    <img src="gaucho.png" alt="Gaucho" class="character-img">
+                </div>
+                <div class="character-item">
+                    <img src="cientifica.png" alt="Científica" class="character-img">
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p class="loading-text">Cargando...</p>
+        </div>
+    </div>
+
+    <!-- PANTALLA PRINCIPAL DE RULETA -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <div class="header-item">
+                <span class="header-label">Modo:</span>
+                <span class="header-value">Clásico</span>
+            </div>
+            <div class="header-item">
+                <span class="header-label">Nivel:</span>
+                <span class="header-value" id="current-level">1</span>
+            </div>
+            <div class="header-item">
+                <span class="header-label">Pregunta:</span>
+                <span class="header-value" id="current-question-num">0/6</span>
+            </div>
+            <div class="header-item">
+                <span class="header-label">Vidas:</span>
+                <span class="header-value" id="lives-display">
+                    <span class="heart">❤️</span>
+                    <span id="lives-count">4</span>
+                </span>
+            </div>
+            <div class="header-item">
+                <span class="header-label">Puntos:</span>
+                <span class="header-value" id="points-display">0</span>
+            </div>
+        </div>
+
+        <div class="category-banner" id="category-banner">
+            <p>Girá la ruleta para comenzar</p>
+        </div>
+
+        <div class="wheel-container">
+            <div class="arrow-indicator"></div>
+            <div class="wheel" id="wheel">
+                <div class="wheel-section" data-category="deportes" style="--start-angle: 0deg;">
+                    <div class="section-content">
+                        <div class="section-icon">⚽</div>
+                        <div class="section-label">Deportes</div>
+                    </div>
+                </div>
+                <div class="wheel-section" data-category="historia" style="--start-angle: 51.43deg;">
+                    <div class="section-content">
+                        <div class="section-icon">📜</div>
+                        <div class="section-label">Historia</div>
+                    </div>
+                </div>
+                <div class="wheel-section" data-category="musica" style="--start-angle: 102.86deg;">
+                    <div class="section-content">
+                        <div class="section-icon">🎵</div>
+                        <div class="section-label">Música</div>
+                    </div>
+                </div>
+                <div class="wheel-section" data-category="geografia" style="--start-angle: 154.29deg;">
+                    <div class="section-content">
+                        <div class="section-icon">🗺️</div>
+                        <div class="section-label">Geografía</div>
+                    </div>
+                </div>
+                <div class="wheel-section" data-category="cine" style="--start-angle: 205.71deg;">
+                    <div class="section-content">
+                        <div class="section-icon">🎬</div>
+                        <div class="section-label">Cine y TV</div>
+                    </div>
+                </div>
+                <div class="wheel-section" data-category="tradiciones" style="--start-angle: 257.14deg;">
+                    <div class="section-content">
+                        <div class="section-icon">🧉</div>
+                        <div class="section-label">Tradiciones</div>
+                    </div>
+                </div>
+                <div class="wheel-section" data-category="ciencia" style="--start-angle: 308.57deg;">
+                    <div class="section-content">
+                        <div class="section-icon">🔬</div>
+                        <div class="section-label">Ciencia</div>
+                    </div>
+                </div>
+            </div>
+            <button id="spin-button" class="spin-button">GIRAR</button>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMACIÓN DE CATEGORÍA -->
+    <div id="category-modal" class="modal">
+        <div class="modal-content">
+            <h2>Te tocó: <span id="modal-category-name"></span></h2>
+            <div class="modal-avatar-container">
+                <img id="modal-avatar" src="" alt="Avatar" class="modal-avatar">
+            </div>
+            <p class="modal-text">¿Querés jugar con esta temática o preferís volver a girar? Si volvés a girar, perdés una vida.</p>
+            <div class="modal-buttons">
+                <button id="play-category-btn" class="btn btn-primary">Jugar esta temática</button>
+                <button id="spin-again-btn" class="btn btn-secondary">Volver a girar (–1 vida)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA DE PREGUNTA -->
+    <div id="question-screen" class="screen">
+        <div class="question-header">
+            <div class="question-header-item">
+                <span>Nivel <span id="question-level">1</span></span>
+            </div>
+            <div class="question-header-item">
+                <span>Pregunta <span id="question-number">1</span>/6</span>
+            </div>
+            <div class="question-header-item">
+                <span>Vidas: <span id="question-lives">4</span></span>
+            </div>
+            <div class="question-header-item">
+                <span>Puntos: <span id="question-points">0</span></span>
+            </div>
+        </div>
+
+        <div class="question-category-display">
+            <img id="question-avatar" src="" alt="Avatar" class="question-avatar-img">
+            <h3 id="question-category-name">Categoría</h3>
+        </div>
+
+        <div class="question-container">
+            <div class="timer-container">
+                <div class="timer-circle">
+                    <span id="timer-text">20</span>
+                </div>
+            </div>
+            <h2 class="question-text" id="question-text">Pregunta aquí</h2>
+            <div class="answers-container" id="answers-container">
+                <!-- Las opciones se generan dinámicamente -->
+            </div>
+        </div>
+
+        <div id="answer-feedback" class="answer-feedback hidden">
+            <p id="feedback-text"></p>
+        </div>
+    </div>
+
+    <!-- PANTALLA DE NIVEL SUPERADO -->
+    <div id="level-complete-screen" class="screen">
+        <div class="complete-content">
+            <h1>¡Nivel Superado!</h1>
+            <div class="complete-stats">
+                <p>Nivel completado: <span id="complete-level">1</span></p>
+                <p>Respuestas correctas: <span id="complete-correct">0</span>/6</p>
+                <p>Puntos totales: <span id="complete-points">0</span></p>
+            </div>
+            <p class="complete-message">¡Te estás volviendo un experto en PreguntARG!</p>
+            <button id="next-level-btn" class="btn btn-primary">Ir al siguiente nivel</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA DE GAME OVER -->
+    <div id="game-over-screen" class="screen">
+        <div class="game-over-content">
+            <h1>Game Over</h1>
+            <p id="game-over-message">Te quedaste sin vidas. ¡A no aflojar! Volvés a empezar desde el Nivel 1.</p>
+            <div class="game-over-stats">
+                <p>Nivel alcanzado: <span id="game-over-level">1</span></p>
+                <p>Puntos totales: <span id="game-over-points">0</span></p>
+            </div>
+            <button id="restart-btn" class="btn btn-primary">Volver a jugar</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA DE VICTORIA FINAL -->
+    <div id="victory-screen" class="screen">
+        <div class="victory-content">
+            <h1>¡Felicitaciones!</h1>
+            <h2>Completaste todos los niveles</h2>
+            <div class="victory-stats">
+                <p>Puntos totales: <span id="victory-points">0</span></p>
+            </div>
+            <p class="victory-message">¡Sos un verdadero experto en cultura argentina!</p>
+            <button id="play-again-btn" class="btn btn-primary">Jugar de nuevo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
