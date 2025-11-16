@@ -532,6 +532,8 @@ document.getElementById('play-category-btn').addEventListener('click', () => {
 document.getElementById('spin-again-btn').addEventListener('click', () => {
     document.getElementById('category-modal').classList.remove('active');
     loseLife();
+    // Actualizar el header con las vidas actualizadas
+    updateGameHeader();
     if (gameState.lives > 0) {
         // Volver a la ruleta
         document.getElementById('category-banner').textContent = 'Girá la ruleta para comenzar';
@@ -693,6 +695,10 @@ function loseLife() {
     gameState.lives--;
     if (gameState.lives <= 0) {
         gameState.lives = 0;
+    }
+    // Actualizar el header inmediatamente después de perder una vida
+    updateGameHeader();
+    if (gameState.lives <= 0) {
         showGameOver();
     }
 }
