@@ -13,7 +13,8 @@ const gameState = {
     currentCategory: null,
     isSpinning: false,
     timer: null,
-    timeLeft: 20
+    timeLeft: 20,
+    currentRotation: 0  // Ángulo actual de la ruleta en grados
 };
 
 // ============================================
@@ -315,33 +316,33 @@ function spinWheel() {
     
     playSound('spin');
     
-    // Seleccionar una categoría aleatoria primero
-    const sectorSize = 360 / 7;
-    const targetSector = Math.floor(Math.random() * 7);
-    
-    // Calcular el ángulo del centro del sector objetivo
-    // Los sectores están en: 0°, 51.43°, 102.86°, 154.29°, 205.71°, 257.14°, 308.57°
-    const targetSectorCenter = targetSector * sectorSize + (sectorSize / 2);
-    
-    // Ángulo base de rotación (múltiplo de 360 para dar vueltas completas)
-    const baseRotations = 3 + Math.floor(Math.random() * 2); // 3 o 4 vueltas
-    const baseAngle = baseRotations * 360;
-    
-    // El indicador está arriba (0°). Para que el sector objetivo quede debajo del indicador,
-    // necesitamos que el sector gire hasta que su centro esté en 180° (debajo).
-    // Si el sector objetivo tiene su centro en targetSectorCenter, necesitamos girar:
-    // (180 - targetSectorCenter) grados para que quede debajo
-    const offset = 180 - targetSectorCenter;
-    const finalAngle = baseAngle + offset;
-    
     const wheel = document.getElementById('wheel');
-    wheel.style.transition = 'transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
-    wheel.style.transform = `rotate(${finalAngle}deg)`;
     
+    // Obtener el ángulo actual de la ruleta (o usar currentRotation si está disponible)
+    // Si la ruleta tiene un transform aplicado, extraer el ángulo, sino usar currentRotation
+    let currentAngle = gameState.currentRotation;
+    
+    // Generar un giro adicional aleatorio (entre 2 y 4 vueltas completas = 720 a 1440 grados)
+    const minRotations = 2;
+    const maxRotations = 4;
+    const randomRotations = minRotations + Math.random() * (maxRotations - minRotations);
+    const additionalRotation = randomRotations * 360; // Convertir vueltas a grados
+    
+    // Calcular el nuevo ángulo total
+    const newRotation = currentAngle + additionalRotation;
+    
+    // Aplicar la animación desde el ángulo actual hasta el nuevo
+    wheel.style.transition = 'transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+    wheel.style.transform = `rotate(${newRotation}deg)`;
+    
+    // Actualizar currentRotation después de la animación
     setTimeout(() => {
-        // Usar directamente la categoría seleccionada (targetSector)
-        const categoryOrder = ['deportes', 'historia', 'musica', 'geografia', 'cine', 'tradiciones', 'ciencia'];
-        const selectedCategory = categoryOrder[targetSector];
+        gameState.currentRotation = newRotation;
+        
+        // Calcular la categoría basándose en el ángulo final real
+        const finalAngle = newRotation % 360;
+        const selectedCategory = getCategoryFromAngle(finalAngle);
+        
         gameState.currentCategory = selectedCategory;
         gameState.isSpinning = false;
         spinButton.disabled = false;
@@ -354,14 +355,12 @@ function getCategoryFromAngle(angle) {
     // Normalizar ángulo a 0-360
     const normalizedAngle = ((angle % 360) + 360) % 360;
     
-    // Cada sector tiene 51.43 grados
+    // Cada sector tiene 51.43 grados (360 / 7)
     const sectorSize = 360 / 7;
     
-    // El indicador está arriba (0°). Cuando la ruleta gira X grados,
-    // el sector que estaba en la posición Y ahora está en (Y + X) mod 360.
-    // Para saber qué sector está debajo del indicador (en 180°):
-    // necesitamos encontrar qué sector original está ahora en 180°.
-    // Si la ruleta giró X grados, el sector que está en 180° ahora
+    // El indicador está arriba (0°). Cuando la ruleta gira, necesitamos saber
+    // qué sector original está ahora debajo del indicador (en 180°).
+    // Si la ruleta giró X grados en sentido horario, el sector que está en 180° ahora
     // estaba originalmente en (180 - X) mod 360
     
     const originalPosition = (180 - normalizedAngle + 360) % 360;
@@ -372,7 +371,9 @@ function getCategoryFromAngle(angle) {
     // Asegurar que esté en el rango 0-6
     sectorIndex = sectorIndex % 7;
     
-    // Mapear a las categorías en orden (según los ángulos definidos en categories)
+    // Mapear a las categorías en orden
+    // Orden: Deportes (0°), Historia (51.43°), Música (102.86°), Geografía (154.29°),
+    //        Cine (205.71°), Tradiciones (257.14°), Ciencia (308.57°)
     const categoryOrder = ['deportes', 'historia', 'musica', 'geografia', 'cine', 'tradiciones', 'ciencia'];
     return categoryOrder[sectorIndex];
 }
@@ -612,6 +613,7 @@ function resetGame() {
     gameState.usedQuestions.clear();
     gameState.currentCategory = null;
     gameState.isSpinning = false;
+    gameState.currentRotation = 0; // Reiniciar la rotación de la ruleta
     
     if (gameState.timer) {
         clearInterval(gameState.timer);
@@ -633,6 +635,12 @@ document.getElementById('spin-button').addEventListener('click', spinWheel);
 
 // Iniciar el juego cuando se carga la página
 window.addEventListener('load', () => {
+    // Asegurar que la ruleta esté en posición inicial
+    const wheel = document.getElementById('wheel');
+    wheel.style.transition = 'none';
+    wheel.style.transform = 'rotate(0deg)';
+    gameState.currentRotation = 0;
+    
     initLoadingScreen();
 });
 
