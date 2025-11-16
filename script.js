@@ -193,6 +193,29 @@ const questions = {
 };
 
 // ============================================
+// EFECTO DE CONFETI
+// ============================================
+
+function createConfetti() {
+    const container = document.querySelector('.confetti-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    const colors = ['#FFCF33', '#0057A3', '#E74C3C', '#27AE60', '#9FB783', '#5DADE2', '#F39C12'];
+    const confettiCount = 50;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti-piece';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        container.appendChild(confetti);
+    }
+}
+
+// ============================================
 // FUNCIONES DE SONIDO
 // ============================================
 
@@ -735,17 +758,35 @@ function checkLevelProgress() {
 
 function showLevelComplete() {
     playSound('level');
-    document.getElementById('complete-level').textContent = gameState.level;
+    const nextLevel = gameState.level + 1;
+    document.getElementById('complete-level-text').textContent = `¡Nivel ${gameState.level} completado!`;
     document.getElementById('complete-correct').textContent = gameState.correctAnswers;
     document.getElementById('complete-points').textContent = gameState.points;
-    showScreen('level-complete-screen');
+    document.getElementById('complete-lives').textContent = gameState.lives;
+    document.getElementById('next-level-number').textContent = nextLevel;
+    
+    // Seleccionar avatar aleatorio para festejo
+    const avatars = ['hincha.png', 'abuelita_mate.png', 'rockera.png', 'carpincho_mate.png', 'director.png', 'gaucho.png', 'cientifica.png'];
+    const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+    document.getElementById('complete-avatar').src = randomAvatar;
+    
+    // Mostrar como modal
+    document.getElementById('level-complete-modal').classList.add('active');
+    
+    // Crear efecto de confeti
+    createConfetti();
 }
 
 document.getElementById('next-level-btn').addEventListener('click', () => {
+    // Cerrar el modal
+    document.getElementById('level-complete-modal').classList.remove('active');
+    
+    // Avanzar al siguiente nivel
     gameState.level++;
     gameState.currentQuestion = 0;
     gameState.correctAnswers = 0;
     gameState.usedQuestions.clear();
+    // Mantener puntos y vidas (no se resetean)
     updateGameHeader();
     document.getElementById('category-banner').textContent = 'Girá la ruleta para comenzar';
     showScreen('game-screen');

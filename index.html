@@ -170,17 +170,25 @@
 
     </div>
 
-    <!-- PANTALLA DE NIVEL SUPERADO -->
-    <div id="level-complete-screen" class="screen">
+    <!-- MODAL DE NIVEL SUPERADO -->
+    <div id="level-complete-modal" class="modal level-complete-modal">
         <div class="complete-content">
-            <h1>¡Nivel Superado!</h1>
-            <div class="complete-stats">
-                <p>Nivel completado: <span id="complete-level">1</span></p>
-                <p>Respuestas correctas: <span id="complete-correct">0</span>/6</p>
-                <p>Puntos totales: <span id="complete-points">0</span></p>
+            <div class="confetti-container"></div>
+            <div class="title-container">
+                <h1 class="complete-title">🏆 <span id="complete-level-text">¡Nivel 1 completado!</span></h1>
+                <div class="title-glow"></div>
             </div>
-            <p class="complete-message">¡Te estás volviendo un experto en PreguntARG!</p>
-            <button id="next-level-btn" class="btn btn-primary">Ir al siguiente nivel</button>
+            <p class="complete-subtitle">Te mandaste alta jugada argentina.</p>
+            <div class="complete-avatar-container">
+                <img id="complete-avatar" src="hincha.png" alt="Avatar festivo" class="complete-avatar">
+            </div>
+            <div class="complete-stats">
+                <p>Respuestas correctas: <span id="complete-correct">0</span> de 6</p>
+                <p>Puntos acumulados: <span id="complete-points">0</span></p>
+                <p>Vidas restantes: <span id="complete-lives">4</span></p>
+            </div>
+            <p class="complete-hint">Mientras mejor juegues, más puntos sumás para el ranking mate & truco.</p>
+            <button id="next-level-btn" class="btn btn-primary btn-large">Ir al Nivel <span id="next-level-number">2</span></button>
         </div>
     </div>
 
