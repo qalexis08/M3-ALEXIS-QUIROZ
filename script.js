@@ -136,7 +136,7 @@ const questions = {
             { id: 'c2-6', pregunta: '¿Quién dirigió "La historia oficial"?', opciones: ['Luis Puenzo', 'Héctor Olivera', 'Fernando Solanas', 'María Luisa Bemberg'], respuestaCorrecta: 0 }
         ],
         tradiciones: [
-            { id: 't2-1', pregunta: '¿Qué se dice tradicionalmente cuando se comparte el mate?', opciones: ['"Salud"', '"Gracias"', '"Buen provecho"', 'No se dice nada'], respuestaCorrecta: 1 },
+            { id: 't2-1', pregunta: '¿Qué se dice cuando no se quiere más mate?', opciones: ['"Salud"', '"Gracias"', '"Buen provecho"', 'No se dice nada'], respuestaCorrecta: 1 },
             { id: 't2-2', pregunta: '¿En qué provincia se celebra la Fiesta Nacional de la Vendimia?', opciones: ['San Juan', 'Mendoza', 'La Rioja', 'Catamarca'], respuestaCorrecta: 1 },
             { id: 't2-3', pregunta: '¿Qué significa "che" en el lenguaje argentino?', opciones: ['Amigo', 'Interjección para llamar atención', 'Ambos', 'Ninguno'], respuestaCorrecta: 2 },
             { id: 't2-4', pregunta: '¿Qué día se celebra el Día del Gaucho?', opciones: ['10 de noviembre', '6 de diciembre', '20 de junio', '9 de julio'], respuestaCorrecta: 1 },
@@ -157,7 +157,7 @@ const questions = {
             { id: 'd3-1', pregunta: '¿En qué año se fundó la Asociación del Fútbol Argentino (AFA)?', opciones: ['1891', '1893', '1895', '1897'], respuestaCorrecta: 1 },
             { id: 'd3-2', pregunta: '¿Cuántos títulos de Primera División tiene Racing Club?', opciones: ['16', '17', '18', '19'], respuestaCorrecta: 2 },
             { id: 'd3-3', pregunta: '¿Qué boxeador argentino fue campeón mundial en peso pesado?', opciones: ['Carlos Monzón', 'Sergio Maravilla Martínez', 'Ninguno', 'Lucas Matthysse'], respuestaCorrecta: 2 },
-            { id: 'd3-4', pregunta: '¿En qué año ganó Argentina la medalla de oro en básquet en los Juegos Olímpicos?', opciones: ['2000', '2004', '2008', 'Nunca'], respuestaCorrecta: 3 },
+            { id: 'd3-4', pregunta: '¿En qué año ganó Argentina la medalla de oro en básquet en los Juegos Olímpicos?', opciones: ['2000', '2004', '2008', 'Nunca'], respuestaCorrecta: 1 },
             { id: 'd3-5', pregunta: '¿Qué tenista argentino llegó a la final de Wimbledon?', opciones: ['David Nalbandian', 'Guillermo Coria', 'Gastón Gaudio', 'Juan Martín del Potro'], respuestaCorrecta: 0 },
             { id: 'd3-6', pregunta: '¿Cuántos goles anotó Lionel Messi en su primera Copa del Mundo?', opciones: ['0', '1', '2', '3'], respuestaCorrecta: 1 }
         ],
@@ -170,7 +170,7 @@ const questions = {
             { id: 'h3-6', pregunta: '¿En qué año se produjo la "Semana Trágica" en Buenos Aires?', opciones: ['1917', '1919', '1921', '1923'], respuestaCorrecta: 1 }
         ],
         musica: [
-            { id: 'm3-1', pregunta: '¿Quién compuso "Balada para un loco"?', opciones: ['Astor Piazzolla', 'Horacio Ferrer', 'Aníbal Troilo', 'Osvaldo Pugliese'], respuestaCorrecta: 0 },
+            { id: 'm3-1', pregunta: '¿Quién compuso "Balada para un loco"?', opciones: ['Astor Piazzolla', 'Horacio Ferrer', 'Aníbal Troilo', 'Osvaldo Pugliese'], respuestaCorrecta: 1 },
             { id: 'm3-2', pregunta: '¿Qué banda tiene el álbum "Ritmo y Blues" de 1993?', opciones: ['Los Fabulosos Cadillacs', 'Babasónicos', 'Divididos', 'La Renga'], respuestaCorrecta: 0 },
             { id: 'm3-3', pregunta: '¿Qué cantante es conocido como "El Flaco"?', opciones: ['Luis Alberto Spinetta', 'Gustavo Cerati', 'Charly García', 'Fito Páez'], respuestaCorrecta: 0 },
             { id: 'm3-4', pregunta: '¿En qué año se formó la banda Soda Stereo?', opciones: ['1980', '1982', '1984', '1986'], respuestaCorrecta: 1 },
