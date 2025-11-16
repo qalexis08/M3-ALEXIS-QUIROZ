@@ -245,34 +245,42 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--blanco);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.6);
     pointer-events: none;
     z-index: 2;
-    --radius: 32%;
-    width: 80px;
-    height: 80px;
+    --radius: 38%;
+    width: 100px;
+    height: auto;
 }
 
 /* Posicionar cada ícono en el centro de su sector */
+/* Estrategia: 
+   1. Mover al centro (translate -50%, -50%)
+   2. Rotar al ángulo del sector
+   3. Mover hacia afuera en la dirección del sector (translateY negativo)
+   4. Rotar de vuelta para mantener el texto derecho
+*/
 .wheel-icon {
     transform: translate(-50%, -50%) 
-               rotate(var(--angle)) 
+               rotate(var(--sector-angle)) 
                translateY(calc(-1 * var(--radius))) 
-               rotate(calc(-1 * var(--angle)));
+               rotate(calc(-1 * var(--sector-angle)));
 }
 
 .icon-emoji {
-    font-size: 2.8rem;
-    margin-bottom: 0.3rem;
+    font-size: 3rem;
+    margin-bottom: 0.4rem;
     display: block;
     line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .icon-label {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: bold;
     text-align: center;
     white-space: nowrap;
+    letter-spacing: 0.5px;
 }
 
 .spin-button {
@@ -762,6 +770,11 @@ body {
     .wheel-container {
         width: 350px;
         height: 350px;
+    }
+
+    .wheel-icon {
+        --radius: 35%;
+        width: 80px;
     }
 
     .icon-emoji {
