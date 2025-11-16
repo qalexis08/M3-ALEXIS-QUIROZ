@@ -66,7 +66,7 @@ const questions = {
         geografia: [
             { id: 'g1-1', pregunta: '¿Cuál es la capital de Argentina?', opciones: ['Córdoba', 'Buenos Aires', 'Rosario', 'Mendoza'], respuestaCorrecta: 1 },
             { id: 'g1-2', pregunta: '¿Cuál es la montaña más alta de Argentina?', opciones: ['Cerro Mercedario', 'Aconcagua', 'Cerro Tupungato', 'Monte Pissis'], respuestaCorrecta: 1 },
-            { id: 'g1-3', pregunta: '¿Cuántas provincias tiene Argentina?', opciones: ['22', '23', '24', '25'], respuestaCorrecta: 2 },
+            { id: 'g1-3', pregunta: '¿Cuántas provincias tiene Argentina?', opciones: ['22', '23', '24', '25'], respuestaCorrecta: 1 },
             { id: 'g1-4', pregunta: '¿En qué provincia se encuentra el Glaciar Perito Moreno?', opciones: ['Chubut', 'Santa Cruz', 'Tierra del Fuego', 'Neuquén'], respuestaCorrecta: 1 },
             { id: 'g1-5', pregunta: '¿Qué río forma parte de la frontera entre Argentina y Uruguay?', opciones: ['Río Paraná', 'Río Uruguay', 'Río de la Plata', 'Río Colorado'], respuestaCorrecta: 1 },
             { id: 'g1-6', pregunta: '¿Cuál es la ciudad más austral del mundo?', opciones: ['Ushuaia', 'Río Gallegos', 'Punta Arenas', 'El Calafate'], respuestaCorrecta: 0 }
