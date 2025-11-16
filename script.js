@@ -896,10 +896,8 @@ function showLevelComplete() {
     document.getElementById('complete-lives').textContent = gameState.lives;
     document.getElementById('next-level-number').textContent = nextLevel;
     
-    // Seleccionar avatar aleatorio para festejo
-    const avatars = ['hincha.png', 'abuelita_mate.png', 'rockera.png', 'carpincho_mate.png', 'director.png', 'gaucho.png', 'cientifica.png'];
-    const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
-    document.getElementById('complete-avatar').src = randomAvatar;
+    // Usar siempre la imagen marley.png
+    document.getElementById('complete-avatar').src = 'marley.png';
     
     // Mostrar como modal
     document.getElementById('level-complete-modal').classList.add('active');

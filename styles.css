@@ -740,19 +740,21 @@ body {
 
 .complete-content {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(167, 223, 252, 0.3) 100%);
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2rem;
     border-radius: 25px;
     text-align: center;
-    max-width: 550px;
+    max-width: 480px;
     width: 85%;
-    max-height: 85vh;
+    max-height: 90vh;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
     animation: modalAppear 0.5s ease;
     border: 3px solid var(--amarillo-sol);
     margin: auto;
-    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
 .confetti-container {
@@ -774,13 +776,14 @@ body {
 
 .complete-title {
     color: var(--azul-intenso);
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
     font-weight: bold;
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 2;
     animation: titlePulse 2s ease-in-out infinite;
+    flex-shrink: 0;
 }
 
 .title-glow {
@@ -806,25 +809,26 @@ body {
 }
 
 .complete-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--azul-oscuro);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.3rem;
     font-weight: 600;
     font-style: italic;
     z-index: 2;
     position: relative;
+    flex-shrink: 0;
 }
 
 .complete-avatar-container {
-    margin: 1.5rem 0;
+    margin: 0.5rem 0;
     z-index: 2;
     position: relative;
-    animation: avatarBounce 1s ease-in-out infinite;
+    flex-shrink: 0;
 }
 
 .complete-avatar {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
@@ -835,37 +839,45 @@ body {
 }
 
 .complete-stats {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%);
-    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 207, 51, 0.2) 100%);
+    padding: 1rem 1.2rem;
     border-radius: 15px;
-    margin: 1.5rem 0;
-    border: 2px solid var(--azul-intenso);
+    margin: 0.3rem 0;
+    border: 3px solid var(--amarillo-sol);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 2;
     position: relative;
+    flex-shrink: 0;
 }
 
 .complete-stats p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--azul-oscuro);
-    margin: 0.6rem 0;
+    margin: 0.4rem 0;
     font-weight: 500;
 }
 
 .complete-stats span {
     font-weight: bold;
     color: var(--azul-intenso);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .complete-hint {
     font-size: 0.85rem;
     color: var(--azul-oscuro);
-    margin: 1rem 0;
+    margin: 0.3rem 0;
     font-style: italic;
     opacity: 0.8;
     z-index: 2;
     position: relative;
+    flex-shrink: 0;
+}
+
+.complete-content #next-level-btn {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
 }
 
 .btn-large {
