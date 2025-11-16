@@ -786,11 +786,26 @@ function checkAnswer(selectedIndex, correctIndex) {
         gameState.points += 100 * gameState.level;
         gameState.correctAnswers++;
     } else {
-        // Respuesta incorrecta
+        // Respuesta incorrecta - alternar entre dos modales
         playSound('incorrect');
-        feedbackText.textContent = 'Respuesta incorrecta: si queres llorar, llorá';
+        
+        // Alternar aleatoriamente entre dos mensajes e imágenes
+        const incorrectOptions = [
+            {
+                message: 'Respuesta incorrecta: si queres llorar, llorá',
+                image: 'moria.png'
+            },
+            {
+                message: 'usted no puede decir semejante barbaridad',
+                image: 'samid.png'
+            }
+        ];
+        
+        const randomOption = incorrectOptions[Math.floor(Math.random() * incorrectOptions.length)];
+        
+        feedbackText.textContent = randomOption.message;
         feedbackContent.className = 'modal-content feedback-modal-content incorrect';
-        feedbackAvatar.src = 'moria.png';
+        feedbackAvatar.src = randomOption.image;
         feedbackAvatar.style.display = 'block';
         loseLife();
     }
