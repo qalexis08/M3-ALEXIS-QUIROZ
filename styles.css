@@ -156,6 +156,7 @@ body {
     align-items: center;
     overflow: hidden;
     height: 100vh;
+    background: linear-gradient(135deg, var(--celeste-claro) 0%, var(--blanco) 50%, var(--celeste-claro) 100%);
 }
 
 .game-container {
