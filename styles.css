@@ -1143,8 +1143,8 @@ body {
 }
 
 .victory-avatar-single {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     object-fit: contain;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
@@ -1198,8 +1198,8 @@ body {
     }
     
     .victory-avatar-single {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
     }
     
     .victory-stats p {
@@ -1213,8 +1213,8 @@ body {
 
 @media (min-width: 1920px) {
     .victory-avatar-single {
-        width: 250px;
-        height: 250px;
+        width: 300px;
+        height: 300px;
     }
     
     .victory-title {
