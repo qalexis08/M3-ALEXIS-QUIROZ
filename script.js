@@ -595,28 +595,29 @@ function checkAnswer(selectedIndex, correctIndex) {
         }
     });
     
-    const feedback = document.getElementById('answer-feedback');
+    const feedbackModal = document.getElementById('answer-feedback-modal');
+    const feedbackContent = feedbackModal.querySelector('.feedback-modal-content');
     const feedbackText = document.getElementById('feedback-text');
     
     if (selectedIndex === correctIndex) {
         // Respuesta correcta
         playSound('correct');
         feedbackText.textContent = '¡Muy bien, compañero!';
-        feedback.className = 'answer-feedback correct';
+        feedbackContent.className = 'modal-content feedback-modal-content correct';
         gameState.points += 100 * gameState.level;
         gameState.correctAnswers++;
     } else {
         // Respuesta incorrecta
         playSound('incorrect');
         feedbackText.textContent = 'Uy, casi casi… Otra vez será.';
-        feedback.className = 'answer-feedback incorrect';
+        feedbackContent.className = 'modal-content feedback-modal-content incorrect';
         loseLife();
     }
     
-    feedback.classList.remove('hidden');
+    feedbackModal.classList.add('active');
     
     setTimeout(() => {
-        feedback.classList.add('hidden');
+        feedbackModal.classList.remove('active');
         gameState.currentQuestion++;
         checkLevelProgress();
     }, 2000);

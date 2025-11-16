@@ -381,6 +381,13 @@ body {
     display: flex;
 }
 
+/* Modal con backdrop blur para feedback */
+.feedback-modal {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .modal-content {
     background-color: var(--blanco);
     padding: 2rem;
@@ -604,38 +611,39 @@ body {
     background: linear-gradient(135deg, var(--rojo) 0%, #c0392b 100%);
 }
 
-.answer-feedback {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 1.2rem;
+/* Estilos para el modal de feedback */
+.feedback-modal-content {
+    padding: 3rem 4rem;
+    max-width: 500px;
+    animation: feedbackModalAppear 0.3s ease;
+}
+
+.feedback-message {
+    font-size: 2rem;
     font-weight: bold;
-    animation: feedbackAppear 0.3s ease;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-.answer-feedback.hidden {
-    display: none;
-}
-
-.answer-feedback.correct {
-    background-color: var(--verde);
+.feedback-modal-content.correct {
+    background: linear-gradient(135deg, var(--verde) 0%, #229954 100%);
     color: var(--blanco);
 }
 
-.answer-feedback.incorrect {
-    background-color: var(--rojo);
+.feedback-modal-content.incorrect {
+    background: linear-gradient(135deg, var(--rojo) 0%, #c0392b 100%);
     color: var(--blanco);
 }
 
-@keyframes feedbackAppear {
+@keyframes feedbackModalAppear {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: scale(0.8) translateY(-20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1) translateY(0);
     }
 }
 
