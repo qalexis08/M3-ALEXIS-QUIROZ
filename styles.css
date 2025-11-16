@@ -663,6 +663,20 @@ body {
     margin: auto;
 }
 
+.timeout-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: timeoutAvatarBounce 1s ease-in-out infinite;
+}
+
+@keyframes timeoutAvatarBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 .timeout-message {
     font-size: 2rem;
     color: var(--azul-intenso);
