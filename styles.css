@@ -69,8 +69,8 @@ body {
 .loading-content {
     text-align: center;
     width: 95%;
-    max-width: 1400px;
-    padding: 1rem;
+    max-width: 1600px;
+    padding: 1.5rem;
     box-sizing: border-box;
 }
 
@@ -78,7 +78,7 @@ body {
     font-size: 4rem;
     color: var(--azul-intenso);
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: bold;
 }
 
@@ -87,8 +87,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
-    margin-bottom: 2.5rem;
-    gap: 1.5rem;
+    margin-bottom: 4rem;
+    gap: 1.2rem;
     width: 100%;
     overflow: hidden;
 }
@@ -98,8 +98,8 @@ body {
 }
 
 .character-img {
-    width: 160px;
-    height: 160px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
     animation: bounce 2s infinite;
 }
@@ -124,7 +124,7 @@ body {
     border-radius: 15px;
     overflow: hidden;
     margin: 0 auto 1rem;
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
