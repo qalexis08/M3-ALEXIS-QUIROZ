@@ -777,11 +777,26 @@ function checkAnswer(selectedIndex, correctIndex) {
     const feedbackAvatar = document.getElementById('feedback-avatar');
     
     if (selectedIndex === correctIndex) {
-        // Respuesta correcta
+        // Respuesta correcta - alternar entre dos modales
         playSound('correct');
-        feedbackText.textContent = 'Correcto, vamos a meameeee';
+        
+        // Alternar aleatoriamente entre dos mensajes e imágenes
+        const correctOptions = [
+            {
+                message: 'Correcto, vamos a meameeee',
+                image: 'fort.png'
+            },
+            {
+                message: 'CORRREEECTOOO',
+                image: 'susana.png'
+            }
+        ];
+        
+        const randomOption = correctOptions[Math.floor(Math.random() * correctOptions.length)];
+        
+        feedbackText.textContent = randomOption.message;
         feedbackContent.className = 'modal-content feedback-modal-content correct';
-        feedbackAvatar.src = 'fort.png';
+        feedbackAvatar.src = randomOption.image;
         feedbackAvatar.style.display = 'block';
         gameState.points += 100 * gameState.level;
         gameState.correctAnswers++;
