@@ -265,17 +265,19 @@ body {
 /* Los íconos deben estar cerca del borde exterior de la ruleta, como en el ejemplo de referencia */
 .wheel-icon {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: center center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Rotamos el contenedor entero usando la variable del HTML */
+    transform: rotate(var(--sector-angle)); 
+    
+    /* No bloquea el clic en el botón de girar */
+    pointer-events: none; 
     z-index: 2;
-    --radius: 87%;
-    width: 90px;
-    height: 90px;
+    
+    /* Las variables --radius, width, height ya no son necesarias aquí */
 }
 
 /* Posicionar cada ícono cerca del borde exterior de la ruleta */
@@ -295,7 +297,20 @@ body {
 }
 
 .icon-emoji {
-    font-size: 4.5rem;
+    position: absolute;
+    
+    /* ¡ESTA ES LA CLAVE! 
+      Ajusta este valor (40px) para mover los iconos
+      más cerca o más lejos del centro.
+    */
+    top: 40px; /* Para el tamaño base de 480px */
+    
+    /* Este truco lo centra horizontalmente en el 'quesito' */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Tus estilos de fuente y sombra (¡están geniales!) */
+    font-size: 4.5rem; 
     display: block;
     line-height: 1;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9));
@@ -817,14 +832,10 @@ body {
         margin: 1rem auto;
     }
 
-    .wheel-icon {
-        --radius: 85%;
-        width: 75px;
-        height: 75px;
-    }
 
     .icon-emoji {
         font-size: 3.5rem;
+        top: 25px;
     }
 
     .spin-button {
@@ -849,14 +860,11 @@ body {
         height: 500px;
     }
 
-    .wheel-icon {
-        --radius: 87%;
-        width: 95px;
-        height: 95px;
-    }
+
 
     .icon-emoji {
         font-size: 5rem;
+        top: 45px;
     }
 
     .spin-button {
