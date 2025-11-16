@@ -788,9 +788,10 @@ function checkAnswer(selectedIndex, correctIndex) {
     } else {
         // Respuesta incorrecta
         playSound('incorrect');
-        feedbackText.textContent = 'Uy, casi casi… Otra vez será.';
+        feedbackText.textContent = 'Respuesta incorrecta: si queres llorar, llorá';
         feedbackContent.className = 'modal-content feedback-modal-content incorrect';
-        feedbackAvatar.style.display = 'none';
+        feedbackAvatar.src = 'moria.png';
+        feedbackAvatar.style.display = 'block';
         loseLife();
     }
     
