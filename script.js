@@ -186,7 +186,7 @@ const questions = {
             { id: 'g3-6', pregunta: '¿Qué provincia argentina limita con Paraguay, Brasil y Uruguay?', opciones: ['Misiones', 'Corrientes', 'Formosa', 'Ninguna'], respuestaCorrecta: 0 }
         ],
         cine: [
-            { id: 'c3-1', pregunta: '¿Qué película de Ricardo Darín ganó el Goya a Mejor Película Iberoamericana?', opciones: ['El secreto de sus ojos', 'Nueve reinas', 'Relatos salvajes', 'La odisea de los giles'], respuestaCorrecta: 3 },
+            { id: 'c3-1', pregunta: '¿Qué película de Ricardo Darín ganó el Goya a Mejor Película Iberoamericana en 2015?', opciones: ['El secreto de sus ojos', 'Nueve reinas', 'Relatos salvajes', 'La odisea de los giles'], respuestaCorrecta: 2 },
             { id: 'c3-2', pregunta: '¿En qué año se estrenó "La historia oficial"?', opciones: ['1983', '1985', '1987', '1989'], respuestaCorrecta: 1 },
             { id: 'c3-3', pregunta: '¿Quién dirigió "El lado oscuro del corazón"?', opciones: ['Eliseo Subiela', 'Adrián Caetano', 'Pablo Trapero', 'Daniel Burman'], respuestaCorrecta: 0 },
             { id: 'c3-4', pregunta: '¿Qué película argentina ganó el premio a Mejor Guión en Cannes?', opciones: ['Relatos salvajes', 'El clan', 'Zama', 'La ciénaga'], respuestaCorrecta: 0 },
