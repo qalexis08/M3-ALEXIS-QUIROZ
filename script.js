@@ -780,7 +780,7 @@ function checkAnswer(selectedIndex, correctIndex) {
         // Respuesta correcta - alternar entre dos modales
         playSound('correct');
         
-        // Alternar aleatoriamente entre dos mensajes e imágenes
+        // Alternar aleatoriamente entre tres mensajes e imágenes
         const correctOptions = [
             {
                 message: 'Correcto, vamos a meameeee',
@@ -789,6 +789,10 @@ function checkAnswer(selectedIndex, correctIndex) {
             {
                 message: 'CORRREEECTOOO',
                 image: 'susana.png'
+            },
+            {
+                message: 'CORRECTO',
+                image: 'mesi.png'
             }
         ];
         
