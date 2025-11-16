@@ -38,7 +38,8 @@ const categories = [
 const questions = {
     1: {
         deportes: [
-            { id: 'd1-1', pregunta: '¿En qué año Argentina ganó su primera Copa del Mundo?', opciones: ['1978', '1986', '2022', '1990'], respuestaCorrecta: 1 },
+            // === CAMBIO 1: PREGUNTA DE LA COPA DEL MUNDO CORREGIDA ===
+            { id: 'd1-1', pregunta: '¿En qué año Argentina ganó su primera Copa del Mundo?', opciones: ['1978', '1986', '2022', '1990'], respuestaCorrecta: 0 }, // Estaba en 1
             { id: 'd1-2', pregunta: '¿Quién es el máximo goleador histórico de la selección argentina?', opciones: ['Diego Maradona', 'Lionel Messi', 'Gabriel Batistuta', 'Hernán Crespo'], respuestaCorrecta: 1 },
             { id: 'd1-3', pregunta: '¿Cuántas veces ganó Argentina la Copa América hasta 2021?', opciones: ['13 veces', '15 veces', '17 veces', '19 veces'], respuestaCorrecta: 1 },
             { id: 'd1-4', pregunta: '¿En qué deporte se destacó Guillermo Vilas?', opciones: ['Fútbol', 'Tenis', 'Básquet', 'Boxeo'], respuestaCorrecta: 1 },
@@ -364,7 +365,7 @@ function spinWheel() {
 }
 
 // ===================================================================
-// =================== ¡INICIO DE LA CORRECCIÓN! ===================
+// ESTA ES LA FUNCIÓN QUE TENÍA EL ERROR DE SINCRONIZACIÓN
 // ===================================================================
 
 function getCategoryFromAngle(angle) {
@@ -374,7 +375,10 @@ function getCategoryFromAngle(angle) {
     // Cada sector tiene 51.42857... grados (360 / 7)
     const sectorSize = 360 / 7; // ≈ 51.42857
     
-    // LÓGICA CORREGIDA:
+    // =================================================================
+    //                   ¡AQUÍ ESTÁ LA CORRECCIÓN!
+    // =================================================================
+    //
     // Tu indicador (flecha) está ARRIBA (en 0°), no abajo (en 180°).
     // La lógica correcta es calcular qué sector de la ruleta
     // ha girado hasta quedar debajo del indicador de 0°.
@@ -441,9 +445,7 @@ function getCategoryFromAngle(angle) {
 }
 
 // ===================================================================
-// =================== ¡FIN DE LA CORRECCIÓN! =====================
 // ===================================================================
-
 
 function showCategoryModal(categoryId) {
     const category = categories.find(c => c.id === categoryId);
@@ -507,6 +509,18 @@ function startQuestion() {
     }
 }
 
+// === CAMBIO 2: NUEVA FUNCIÓN PARA MEZCLAR OPCIONES ===
+/**
+ * Mezcla un array en el lugar usando el algoritmo Fisher-Yates.
+ * @param {Array} array El array a mezclar.
+ */
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Intercambio de elementos
+    }
+}
+
 function displayQuestion(question, categoryId) {
     const category = categories.find(c => c.id === categoryId);
     
@@ -517,13 +531,30 @@ function displayQuestion(question, categoryId) {
     const answersContainer = document.getElementById('answers-container');
     answersContainer.innerHTML = '';
     
-    question.opciones.forEach((opcion, index) => {
+    // === CAMBIO 3: LÓGICA PARA MEZCLAR LAS RESPUESTAS ===
+    
+    // 1. Copiamos las opciones para no modificar el objeto original (importante si se reutiliza la pregunta)
+    let opciones = [...question.opciones];
+    // 2. Guardamos el TEXTO de la respuesta correcta
+    const correctAnswerText = opciones[question.respuestaCorrecta];
+
+    // 3. Mezclamos el array de opciones copiado
+    shuffleArray(opciones);
+
+    // 4. Encontramos el NUEVO índice de la respuesta correcta en el array mezclado
+    const newCorrectIndex = opciones.indexOf(correctAnswerText);
+    
+    // 5. Mostramos las opciones MEZCLADAS
+    opciones.forEach((opcion, index) => {
         const button = document.createElement('button');
         button.className = 'answer-button';
         button.textContent = opcion;
-        button.addEventListener('click', () => checkAnswer(index, question.respuestaCorrecta));
+        // 6. Usamos el NUEVO índice para la comprobación
+        button.addEventListener('click', () => checkAnswer(index, newCorrectIndex));
         answersContainer.appendChild(button);
     });
+    
+    // === FIN DEL CAMBIO 3 ===
     
     updateQuestionHeader();
     document.getElementById('category-banner').textContent = `Categoría: ${category.name}`;
