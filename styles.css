@@ -133,8 +133,23 @@ body {
    ============================================ */
 
 #game-screen {
-    padding: 1rem;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 1920px;
+    max-height: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
 .game-header {
@@ -142,11 +157,11 @@ body {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 1rem;
+    padding: 1.2rem 1.5rem;
     border-radius: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -185,6 +200,7 @@ body {
     margin-bottom: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     min-width: 300px;
+    max-width: 600px;
 }
 
 /* ============================================
@@ -193,10 +209,13 @@ body {
 
 .wheel-container {
     position: relative;
-    width: 500px;
-    height: 500px;
-    margin: 2rem auto;
+    width: 550px;
+    height: 550px;
+    max-width: 90vw;
+    max-height: 90vw;
+    margin: 1.5rem auto;
     aspect-ratio: 1;
+    flex-shrink: 0;
 }
 
 .arrow-indicator {
@@ -758,6 +777,10 @@ body {
    ============================================ */
 
 @media (max-width: 768px) {
+    .game-container {
+        padding: 1rem;
+    }
+
     .game-title {
         font-size: 2.5rem;
     }
@@ -767,9 +790,23 @@ body {
         height: 60px;
     }
 
+    .game-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .category-banner {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
     .wheel-container {
-        width: 350px;
-        height: 350px;
+        width: min(90vw, 400px);
+        height: min(90vw, 400px);
+        margin: 1rem auto;
     }
 
     .wheel-icon {
@@ -791,14 +828,20 @@ body {
         font-size: 1.3rem;
     }
 
-    .game-header {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
     .question-header {
         flex-wrap: wrap;
         gap: 0.5rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .game-container {
+        padding: 3rem;
+    }
+
+    .wheel-container {
+        width: 600px;
+        height: 600px;
     }
 }
 
