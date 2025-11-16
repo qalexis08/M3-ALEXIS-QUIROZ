@@ -213,16 +213,45 @@
         </div>
     </div>
 
-    <!-- PANTALLA DE VICTORIA FINAL -->
-    <div id="victory-screen" class="screen">
+    <!-- MODAL DE VICTORIA FINAL -->
+    <div id="victory-modal" class="modal victory-modal">
         <div class="victory-content">
-            <h1>¡Felicitaciones!</h1>
-            <h2>Completaste todos los niveles</h2>
+            <div class="confetti-container-victory"></div>
+            <div class="title-container">
+                <h1 class="victory-title">🎉 <span>¡FELICITACIONES!</span> 🎉</h1>
+                <div class="title-glow-victory"></div>
+            </div>
+            <p class="victory-subtitle">¡Completaste todos los niveles! Sos un verdadero experto en cultura argentina.</p>
+            
+            <div class="victory-avatars-container">
+                <div class="victory-avatar-item">
+                    <img src="hincha.png" alt="Hincha" class="victory-avatar">
+                </div>
+                <div class="victory-avatar-item">
+                    <img src="abuelita_mate.png" alt="Abuelita" class="victory-avatar">
+                </div>
+                <div class="victory-avatar-item">
+                    <img src="rockera.png" alt="Rockera" class="victory-avatar">
+                </div>
+                <div class="victory-avatar-item">
+                    <img src="carpincho_mate.png" alt="Carpincho" class="victory-avatar">
+                </div>
+                <div class="victory-avatar-item">
+                    <img src="director.png" alt="Director" class="victory-avatar">
+                </div>
+                <div class="victory-avatar-item">
+                    <img src="gaucho.png" alt="Gaucho" class="victory-avatar">
+                </div>
+                <div class="victory-avatar-item">
+                    <img src="cientifica.png" alt="Científica" class="victory-avatar">
+                </div>
+            </div>
+            
             <div class="victory-stats">
                 <p>Puntos totales: <span id="victory-points">0</span></p>
             </div>
-            <p class="victory-message">¡Sos un verdadero experto en cultura argentina!</p>
-            <button id="play-again-btn" class="btn btn-primary">Jugar de nuevo</button>
+            <p class="victory-message">¡Todos festejamos tu victoria! 🏆🇦🇷</p>
+            <button id="play-again-btn" class="btn btn-primary btn-large">Jugar de nuevo</button>
         </div>
     </div>
 

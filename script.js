@@ -235,6 +235,25 @@ function createConfetti() {
     }
 }
 
+function createVictoryConfetti() {
+    const container = document.querySelector('.confetti-container-victory');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    const colors = ['#FFCF33', '#0057A3', '#E74C3C', '#27AE60', '#9FB783', '#5DADE2', '#F39C12'];
+    const confettiCount = 100;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti-piece';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 3 + 's';
+        confetti.style.animationDuration = (Math.random() * 4 + 3) + 's';
+        container.appendChild(confetti);
+    }
+}
+
 // ============================================
 // FUNCIONES DE SONIDO
 // ============================================
@@ -846,10 +865,18 @@ document.getElementById('restart-btn').addEventListener('click', () => {
 function showVictory() {
     playSound('level');
     document.getElementById('victory-points').textContent = gameState.points;
-    showScreen('victory-screen');
+    
+    // Mostrar como modal
+    document.getElementById('victory-modal').classList.add('active');
+    
+    // Crear efecto de confeti para la victoria
+    createVictoryConfetti();
 }
 
 document.getElementById('play-again-btn').addEventListener('click', () => {
+    // Cerrar el modal
+    document.getElementById('victory-modal').classList.remove('active');
+    
     resetGame();
     showScreen('game-screen');
 });
