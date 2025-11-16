@@ -672,7 +672,7 @@ body {
     animation: modalAppear 0.5s ease;
     border: 3px solid var(--amarillo-sol);
     margin: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .confetti-container {
