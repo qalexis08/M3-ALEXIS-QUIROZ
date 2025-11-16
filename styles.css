@@ -289,28 +289,14 @@ body {
    Esto coloca los íconos a aproximadamente 87% del radio desde el centro, 
    muy cerca del borde exterior, completamente fuera del botón central
 */
-.wheel-icon {
-    transform: translate(-50%, -50%) 
-               rotate(var(--sector-angle)) 
-               translateY(calc(-1 * var(--radius))) 
-               rotate(calc(-1 * var(--sector-angle)));
-}
+
 
 .icon-emoji {
     position: absolute;
-    
-    /* ¡ESTA ES LA CLAVE! 
-      Ajusta este valor (40px) para mover los iconos
-      más cerca o más lejos del centro.
-    */
-    top: 40px; /* Para el tamaño base de 480px */
-    
-    /* Este truco lo centra horizontalmente en el 'quesito' */
-    left: 50%;
+    top: 50px; 
+    left: 48%;
     transform: translateX(-50%);
-
-    /* Tus estilos de fuente y sombra (¡están geniales!) */
-    font-size: 4.5rem; 
+    font-size: 3rem; 
     display: block;
     line-height: 1;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9));
@@ -834,8 +820,8 @@ body {
 
 
     .icon-emoji {
-        font-size: 3.5rem;
-        top: 25px;
+        font-size: 2rem;
+        top: 35px;
     }
 
     .spin-button {
@@ -863,8 +849,8 @@ body {
 
 
     .icon-emoji {
-        font-size: 5rem;
-        top: 45px;
+        font-size: 3.5rem;
+        top: 65px;
     }
 
     .spin-button {
