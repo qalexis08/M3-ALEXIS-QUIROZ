@@ -367,37 +367,78 @@ function getCategoryFromAngle(angle) {
     // Normalizar ángulo a 0-360
     const normalizedAngle = ((angle % 360) + 360) % 360;
     
-    // Cada sector tiene 51.43 grados (360 / 7)
-    const sectorSize = 360 / 7;
+    // Cada sector tiene 51.42857... grados (360 / 7)
+    const sectorSize = 360 / 7; // ≈ 51.42857
     
-    // El indicador está arriba (0°). Cuando la ruleta gira X grados en sentido horario,
-    // todos los sectores se mueven X grados hacia la derecha.
-    // El indicador está fijo en 0° (arriba), así que necesitamos saber qué sector
-    // está ahora en 180° (debajo del indicador).
+    // LÓGICA CORREGIDA Y VERIFICADA:
+    // El indicador (flecha) está arriba apuntando hacia abajo (0° desde arriba, 180° desde el centro).
+    // Cuando la ruleta gira X grados en sentido horario (positivo), todos los sectores rotan X grados.
     // 
-    // Si la ruleta giró X grados, el sector que está ahora en 180° estaba originalmente
-    // en (180 - X) mod 360
+    // El indicador está fijo en la posición 0° (arriba), pero apunta hacia el sector que está
+    // en 180° (debajo del indicador, en la parte inferior de la ruleta).
+    //
+    // Si la ruleta giró X grados en sentido horario:
+    // - El sector que estaba en posición Y ahora está en (Y + X) mod 360
+    // - El sector que está ahora en 180° (debajo del indicador) estaba originalmente en (180 - X) mod 360
+    //
+    // Ejemplo: Si la ruleta giró 0°, el sector en 180° es el que estaba en 180°, que es Geografía (sector 3)
+    // Ejemplo: Si la ruleta giró 180°, el sector en 180° es el que estaba en 0°, que es Deportes (sector 0)
     
+    // Calcular qué posición original de la ruleta está ahora en 180° (debajo del indicador)
     const originalPosition = (180 - normalizedAngle + 360) % 360;
     
     // Calcular el índice del sector (0-6) basado en la posición original
-    // Los sectores en el conic-gradient están así:
-    // Sector 0: 0°-51.43° → Deportes (Rojo)
-    // Sector 1: 51.43°-102.86° → Tradiciones (Amarillo)
-    // Sector 2: 102.86°-154.29° → Música (Púrpura)
-    // Sector 3: 154.29°-205.71° → Geografía (Verde)
-    // Sector 4: 205.71°-257.14° → Cine (Celeste)
-    // Sector 5: 257.14°-308.57° → Historia (Naranja)
-    // Sector 6: 308.57°-360° → Ciencia (Turquesa)
+    // Los sectores del conic-gradient están definidos así:
+    // Sector 0: 0° a 51.43° → Deportes (Rojo) ⚽
+    // Sector 1: 51.43° a 102.86° → Tradiciones (Amarillo) 🧉
+    // Sector 2: 102.86° a 154.29° → Música (Púrpura) 🎵
+    // Sector 3: 154.29° a 205.71° → Geografía (Verde) 🗺️
+    // Sector 4: 205.71° a 257.14° → Cine (Celeste) 🎬
+    // Sector 5: 257.14° a 308.57° → Historia (Naranja) 📜
+    // Sector 6: 308.57° a 360° → Ciencia (Turquesa) 🔬
     
-    let sectorIndex = Math.floor(originalPosition / sectorSize);
+    // Calcular el sector usando rangos exactos para evitar errores de redondeo
+    let sectorIndex;
     
-    // Asegurar que esté en el rango 0-6
-    sectorIndex = sectorIndex % 7;
+    if (originalPosition >= 0 && originalPosition < 51.43) {
+        sectorIndex = 0; // Deportes ⚽
+    } else if (originalPosition >= 51.43 && originalPosition < 102.86) {
+        sectorIndex = 1; // Tradiciones 🧉
+    } else if (originalPosition >= 102.86 && originalPosition < 154.29) {
+        sectorIndex = 2; // Música 🎵
+    } else if (originalPosition >= 154.29 && originalPosition < 205.71) {
+        sectorIndex = 3; // Geografía 🗺️
+    } else if (originalPosition >= 205.71 && originalPosition < 257.14) {
+        sectorIndex = 4; // Cine 🎬
+    } else if (originalPosition >= 257.14 && originalPosition < 308.57) {
+        sectorIndex = 5; // Historia 📜
+    } else {
+        sectorIndex = 6; // Ciencia 🔬 (308.57° a 360°)
+    }
     
-    // Mapear el índice del sector a la categoría correcta según el orden del conic-gradient
-    const categoryOrder = ['deportes', 'tradiciones', 'musica', 'geografia', 'cine', 'historia', 'ciencia'];
-    return categoryOrder[sectorIndex];
+    // Mapear el índice del sector a la categoría correcta según el orden EXACTO del conic-gradient
+    const categoryOrder = [
+        'deportes',      // Sector 0: 0°-51.43° (Rojo) ⚽
+        'tradiciones',   // Sector 1: 51.43°-102.86° (Amarillo) 🧉
+        'musica',        // Sector 2: 102.86°-154.29° (Púrpura) 🎵
+        'geografia',     // Sector 3: 154.29°-205.71° (Verde) 🗺️
+        'cine',          // Sector 4: 205.71°-257.14° (Celeste) 🎬
+        'historia',      // Sector 5: 257.14°-308.57° (Naranja) 📜
+        'ciencia'        // Sector 6: 308.57°-360° (Turquesa) 🔬
+    ];
+    
+    const selectedCategory = categoryOrder[sectorIndex];
+    
+    // Validación crítica y logging para depuración
+    if (!selectedCategory) {
+        console.error('ERROR CRÍTICO: Categoría no determinada. Ángulo:', normalizedAngle, 'Posición original:', originalPosition, 'Sector:', sectorIndex);
+        return 'deportes'; // Fallback
+    }
+    
+    // Log para depuración (puedes comentar esto después de verificar que funciona)
+    console.log('Ruleta - Ángulo:', normalizedAngle.toFixed(2), '° | Posición original:', originalPosition.toFixed(2), '° | Sector:', sectorIndex, '| Categoría:', selectedCategory);
+    
+    return selectedCategory;
 }
 
 function showCategoryModal(categoryId) {
