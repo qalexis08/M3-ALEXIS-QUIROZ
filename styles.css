@@ -262,6 +262,7 @@ body {
 }
 
 /* Íconos posicionados en cada sector - Solo íconos, sin texto */
+/* Los íconos deben estar cerca del borde exterior de la ruleta, como en el ejemplo de referencia */
 .wheel-icon {
     position: absolute;
     top: 50%;
@@ -272,19 +273,19 @@ body {
     justify-content: center;
     pointer-events: none;
     z-index: 2;
-    --radius: 78%;
-    width: 70px;
-    height: 70px;
+    --radius: 87%;
+    width: 90px;
+    height: 90px;
 }
 
-/* Posicionar cada ícono en el centro de su sector, cerca del borde exterior */
+/* Posicionar cada ícono cerca del borde exterior de la ruleta */
 /* Estrategia: 
    1. Mover al centro (translate -50%, -50%)
    2. Rotar al ángulo del sector
-   3. Mover hacia afuera en la dirección del sector (translateY negativo) - 78% del radio
+   3. Mover hacia afuera en la dirección del sector (translateY negativo) - 87% del radio
    4. Rotar de vuelta para mantener el ícono derecho
-   Esto coloca los íconos a aproximadamente 78% del radio desde el centro, 
-   completamente fuera del botón central que ocupa ~25% del radio
+   Esto coloca los íconos a aproximadamente 87% del radio desde el centro, 
+   muy cerca del borde exterior, completamente fuera del botón central
 */
 .wheel-icon {
     transform: translate(-50%, -50%) 
@@ -294,10 +295,10 @@ body {
 }
 
 .icon-emoji {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     display: block;
     line-height: 1;
-    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9));
     width: 1em;
     height: 1em;
     text-align: center;
@@ -313,17 +314,17 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--azul-intenso) 0%, #003d7a 100%);
-    color: var(--blanco);
-    font-size: 1.4rem;
+    background: var(--blanco);
+    color: var(--azul-intenso);
+    font-size: 1.3rem;
     font-weight: bold;
-    border: 5px solid var(--blanco);
+    border: 4px solid var(--azul-intenso);
     cursor: pointer;
     z-index: 10;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     align-items: center;
@@ -331,8 +332,9 @@ body {
 }
 
 .spin-button:hover {
-    transform: translate(-50%, -50%) scale(1.08);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    background: #f0f0f0;
 }
 
 .spin-button:active {
@@ -816,13 +818,13 @@ body {
     }
 
     .wheel-icon {
-        --radius: 72%;
-        width: 65px;
-        height: 65px;
+        --radius: 85%;
+        width: 75px;
+        height: 75px;
     }
 
     .icon-emoji {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
     }
 
     .spin-button {
@@ -848,19 +850,19 @@ body {
     }
 
     .wheel-icon {
-        --radius: 78%;
-        width: 75px;
-        height: 75px;
+        --radius: 87%;
+        width: 95px;
+        height: 95px;
     }
 
     .icon-emoji {
-        font-size: 4rem;
+        font-size: 5rem;
     }
 
     .spin-button {
-        width: 125px;
-        height: 125px;
-        font-size: 1.6rem;
+        width: 110px;
+        height: 110px;
+        font-size: 1.5rem;
     }
 }
 
