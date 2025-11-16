@@ -38,54 +38,60 @@ const categories = [
 const questions = {
     1: {
         deportes: [
-            // === CAMBIO 1: PREGUNTA DE LA COPA DEL MUNDO CORREGIDA ===
-            { id: 'd1-1', pregunta: '¿En qué año Argentina ganó su primera Copa del Mundo?', opciones: ['1978', '1986', '2022', '1990'], respuestaCorrecta: 0 }, // Estaba en 1
+            { id: 'd1-1', pregunta: '¿En qué año Argentina ganó su primera Copa del Mundo?', opciones: ['1978', '1986', '2022', '1990'], respuestaCorrecta: 0 },
             { id: 'd1-2', pregunta: '¿Quién es el máximo goleador histórico de la selección argentina?', opciones: ['Diego Maradona', 'Lionel Messi', 'Gabriel Batistuta', 'Hernán Crespo'], respuestaCorrecta: 1 },
-            { id: 'd1-3', pregunta: '¿Cuántas veces ganó Argentina la Copa América hasta 2021?', opciones: ['13 veces', '15 veces', '17 veces', '19 veces'], respuestaCorrecta: 1 },
-            { id: 'd1-4', pregunta: '¿En qué deporte se destacó Guillermo Vilas?', opciones: ['Fútbol', 'Tenis', 'Básquet', 'Boxeo'], respuestaCorrecta: 1 },
-            { id: 'd1-5', pregunta: '¿Qué equipo de fútbol tiene más títulos de Primera División en Argentina?', opciones: ['Boca Juniors', 'River Plate', 'Racing', 'Independiente'], respuestaCorrecta: 0 }
+            { id: 'd1-3', pregunta: '¿En qué deporte se destacó Guillermo Vilas?', opciones: ['Fútbol', 'Tenis', 'Básquet', 'Boxeo'], respuestaCorrecta: 1 },
+            { id: 'd1-4', pregunta: '¿Qué equipo de fútbol tiene más títulos de Primera División en Argentina?', opciones: ['Boca Juniors', 'River Plate', 'Racing', 'Independiente'], respuestaCorrecta: 0 },
+            { id: 'd1-5', pregunta: '¿Cuántas veces ganó Argentina la Copa del Mundo?', opciones: ['2 veces', '3 veces', '4 veces', '5 veces'], respuestaCorrecta: 1 },
+            { id: 'd1-6', pregunta: '¿En qué deporte se destacó Emanuel Ginóbili?', opciones: ['Fútbol', 'Básquet', 'Tenis', 'Vóley'], respuestaCorrecta: 1 }
         ],
         historia: [
             { id: 'h1-1', pregunta: '¿En qué año se declaró la independencia de Argentina?', opciones: ['1810', '1816', '1820', '1825'], respuestaCorrecta: 1 },
-            { id: 'h1-2', pregunta: '¿Quién fue el primer presidente constitucional de Argentina?', opciones: ['Bernardino Rivadavia', 'Juan Manuel de Rosas', 'Bartolomé Mitre', 'Domingo Faustino Sarmiento'], respuestaCorrecta: 0 },
-            { id: 'h1-3', pregunta: '¿Qué día se celebra la Revolución de Mayo?', opciones: ['9 de julio', '25 de mayo', '20 de junio', '17 de agosto'], respuestaCorrecta: 1 },
-            { id: 'h1-4', pregunta: '¿Dónde se firmó el Acta de la Independencia?', opciones: ['Buenos Aires', 'Tucumán', 'Córdoba', 'Mendoza'], respuestaCorrecta: 1 },
-            { id: 'h1-5', pregunta: '¿Quién fue conocido como "El Libertador"?', opciones: ['José de San Martín', 'Manuel Belgrano', 'Mariano Moreno', 'Juan José Castelli'], respuestaCorrecta: 0 }
+            { id: 'h1-2', pregunta: '¿Qué día se celebra la Revolución de Mayo?', opciones: ['9 de julio', '25 de mayo', '20 de junio', '17 de agosto'], respuestaCorrecta: 1 },
+            { id: 'h1-3', pregunta: '¿Dónde se firmó el Acta de la Independencia?', opciones: ['Buenos Aires', 'Tucumán', 'Córdoba', 'Mendoza'], respuestaCorrecta: 1 },
+            { id: 'h1-4', pregunta: '¿Quién fue conocido como "El Libertador"?', opciones: ['José de San Martín', 'Manuel Belgrano', 'Mariano Moreno', 'Juan José Castelli'], respuestaCorrecta: 0 },
+            { id: 'h1-5', pregunta: '¿Quién creó la bandera argentina?', opciones: ['José de San Martín', 'Manuel Belgrano', 'Mariano Moreno', 'Bernardino Rivadavia'], respuestaCorrecta: 1 },
+            { id: 'h1-6', pregunta: '¿Qué día se celebra el Día de la Bandera?', opciones: ['20 de junio', '25 de mayo', '9 de julio', '17 de agosto'], respuestaCorrecta: 0 }
         ],
         musica: [
-            { id: 'm1-1', pregunta: '¿Qué banda argentina es conocida por la canción "Muchacha ojos de papel"?', opciones: ['Soda Stereo', 'Los Fabulosos Cadillacs', 'Almendra', 'Serú Girán'], respuestaCorrecta: 2 },
-            { id: 'm1-2', pregunta: '¿Quién es el autor de "Cambalache"?', opciones: ['Carlos Gardel', 'Enrique Santos Discépolo', 'Astor Piazzolla', 'Atahualpa Yupanqui'], respuestaCorrecta: 1 },
-            { id: 'm1-3', pregunta: '¿Qué instrumento tocaba Astor Piazzolla?', opciones: ['Guitarra', 'Bandoneón', 'Piano', 'Violín'], respuestaCorrecta: 1 },
-            { id: 'm1-4', pregunta: '¿Cuál es el nombre real de "El Flaco" Spinetta?', opciones: ['Luis Alberto', 'Gustavo Cerati', 'Charly García', 'Fito Páez'], respuestaCorrecta: 0 },
-            { id: 'm1-5', pregunta: '¿Qué género musical es característico de Carlos Gardel?', opciones: ['Rock', 'Tango', 'Folclore', 'Cumbia'], respuestaCorrecta: 1 }
+            { id: 'm1-1', pregunta: '¿Qué género musical es característico de Carlos Gardel?', opciones: ['Rock', 'Tango', 'Folclore', 'Cumbia'], respuestaCorrecta: 1 },
+            { id: 'm1-2', pregunta: '¿Qué instrumento tocaba Astor Piazzolla?', opciones: ['Guitarra', 'Bandoneón', 'Piano', 'Violín'], respuestaCorrecta: 1 },
+            { id: 'm1-3', pregunta: '¿Qué banda argentina es conocida por la canción "Muchacha ojos de papel"?', opciones: ['Soda Stereo', 'Los Fabulosos Cadillacs', 'Almendra', 'Serú Girán'], respuestaCorrecta: 2 },
+            { id: 'm1-4', pregunta: '¿Quién es el autor de "Cambalache"?', opciones: ['Carlos Gardel', 'Enrique Santos Discépolo', 'Astor Piazzolla', 'Atahualpa Yupanqui'], respuestaCorrecta: 1 },
+            { id: 'm1-5', pregunta: '¿Cuál es el nombre real de "El Flaco" Spinetta?', opciones: ['Luis Alberto', 'Gustavo Cerati', 'Charly García', 'Fito Páez'], respuestaCorrecta: 0 },
+            { id: 'm1-6', pregunta: '¿Qué cantante argentina es conocida como "La Negra"?', opciones: ['Mercedes Sosa', 'Violeta Rivas', 'Palito Ortega', 'Sandro'], respuestaCorrecta: 0 }
         ],
         geografia: [
             { id: 'g1-1', pregunta: '¿Cuál es la capital de Argentina?', opciones: ['Córdoba', 'Buenos Aires', 'Rosario', 'Mendoza'], respuestaCorrecta: 1 },
             { id: 'g1-2', pregunta: '¿Cuál es la montaña más alta de Argentina?', opciones: ['Cerro Mercedario', 'Aconcagua', 'Cerro Tupungato', 'Monte Pissis'], respuestaCorrecta: 1 },
-            { id: 'g1-3', pregunta: '¿Qué río forma parte de la frontera entre Argentina y Uruguay?', opciones: ['Río Paraná', 'Río Uruguay', 'Río de la Plata', 'Río Colorado'], respuestaCorrecta: 1 },
+            { id: 'g1-3', pregunta: '¿Cuántas provincias tiene Argentina?', opciones: ['22', '23', '24', '25'], respuestaCorrecta: 2 },
             { id: 'g1-4', pregunta: '¿En qué provincia se encuentra el Glaciar Perito Moreno?', opciones: ['Chubut', 'Santa Cruz', 'Tierra del Fuego', 'Neuquén'], respuestaCorrecta: 1 },
-            { id: 'g1-5', pregunta: '¿Cuántas provincias tiene Argentina?', opciones: ['22', '23', '24', '25'], respuestaCorrecta: 2 }
+            { id: 'g1-5', pregunta: '¿Qué río forma parte de la frontera entre Argentina y Uruguay?', opciones: ['Río Paraná', 'Río Uruguay', 'Río de la Plata', 'Río Colorado'], respuestaCorrecta: 1 },
+            { id: 'g1-6', pregunta: '¿Cuál es la ciudad más austral del mundo?', opciones: ['Ushuaia', 'Río Gallegos', 'Punta Arenas', 'El Calafate'], respuestaCorrecta: 0 }
         ],
         cine: [
             { id: 'c1-1', pregunta: '¿Qué película argentina ganó el Oscar a Mejor Película Extranjera en 1985?', opciones: ['La historia oficial', 'El secreto de sus ojos', 'Nueve reinas', 'Relatos salvajes'], respuestaCorrecta: 0 },
             { id: 'c1-2', pregunta: '¿Quién dirigió "El secreto de sus ojos"?', opciones: ['Juan José Campanella', 'Pablo Trapero', 'Damián Szifrón', 'Lucrecia Martel'], respuestaCorrecta: 0 },
-            { id: 'c1-3', pregunta: '¿Qué actor argentino interpretó a Che Guevara en "Diarios de motocicleta"?', opciones: ['Ricardo Darín', 'Gael García Bernal', 'Diego Luna', 'Benicio del Toro'], respuestaCorrecta: 1 },
-            { id: 'c1-4', pregunta: '¿Cuál es el nombre del programa de TV argentino conocido por "¿Quién quiere ser millonario?"?', opciones: ['ShowMatch', 'Susana Giménez', 'El show de Videomatch', 'No hay programa así'], respuestaCorrecta: 2 },
-            { id: 'c1-5', pregunta: '¿Qué película de 2014 fue nominada al Oscar?', opciones: ['Relatos salvajes', 'El clan', 'La patota', 'Zama'], respuestaCorrecta: 0 }
+            { id: 'c1-3', pregunta: '¿Qué actor argentino es conocido por "Nueve reinas"?', opciones: ['Ricardo Darín', 'Guillermo Francella', 'Diego Peretti', 'Luis Brandoni'], respuestaCorrecta: 0 },
+            { id: 'c1-4', pregunta: '¿Qué película argentina ganó el Oscar en 2009?', opciones: ['El secreto de sus ojos', 'La historia oficial', 'Relatos salvajes', 'Nueve reinas'], respuestaCorrecta: 0 },
+            { id: 'c1-5', pregunta: '¿Qué programa de TV fue creado por Marcelo Tinelli?', opciones: ['ShowMatch', 'Susana Giménez', 'CQC', 'Los profesionales de siempre'], respuestaCorrecta: 0 },
+            { id: 'c1-6', pregunta: '¿Qué película de 2014 fue nominada al Oscar?', opciones: ['Relatos salvajes', 'El clan', 'La patota', 'Zama'], respuestaCorrecta: 0 }
         ],
         tradiciones: [
             { id: 't1-1', pregunta: '¿Qué se toma tradicionalmente en Argentina con bombilla?', opciones: ['Café', 'Té', 'Mate', 'Chocolate'], respuestaCorrecta: 2 },
-            { id: 't1-2', pregunta: '¿Qué día se celebra el Día de la Tradición?', opciones: ['10 de noviembre', '25 de mayo', '9 de julio', '20 de junio'], respuestaCorrecta: 0 },
-            { id: 't1-3', pregunta: '¿Qué comida típica argentina se hace con carne a la parrilla?', opciones: ['Empanadas', 'Asado', 'Locro', 'Humita'], respuestaCorrecta: 1 },
-            { id: 't1-4', pregunta: '¿En qué mes se celebra tradicionalmente el Día del Amigo en Argentina?', opciones: ['Mayo', 'Junio', 'Julio', 'Agosto'], respuestaCorrecta: 2 },
-            { id: 't1-5', pregunta: '¿Qué baile tradicional argentino es patrimonio de la humanidad?', opciones: ['Tango', 'Chacarera', 'Zamba', 'Cueca'], respuestaCorrecta: 0 }
+            { id: 't1-2', pregunta: '¿Qué comida típica argentina se hace con carne a la parrilla?', opciones: ['Empanadas', 'Asado', 'Locro', 'Humita'], respuestaCorrecta: 1 },
+            { id: 't1-3', pregunta: '¿Qué baile tradicional argentino es patrimonio de la humanidad?', opciones: ['Tango', 'Chacarera', 'Zamba', 'Cueca'], respuestaCorrecta: 0 },
+            { id: 't1-4', pregunta: '¿Qué día se celebra el Día de la Tradición?', opciones: ['10 de noviembre', '25 de mayo', '9 de julio', '20 de junio'], respuestaCorrecta: 0 },
+            { id: 't1-5', pregunta: '¿En qué mes se celebra tradicionalmente el Día del Amigo en Argentina?', opciones: ['Mayo', 'Junio', 'Julio', 'Agosto'], respuestaCorrecta: 2 },
+            { id: 't1-6', pregunta: '¿Qué comida típica se come el 25 de mayo?', opciones: ['Asado', 'Locro', 'Empanadas', 'Pastelitos'], respuestaCorrecta: 1 }
         ],
         ciencia: [
-            { id: 's1-1', pregunta: '¿Quién fue el primer argentino en ganar un Premio Nobel en Ciencias?', opciones: ['Luis Federico Leloir', 'César Milstein', 'Bernardo Houssay', 'Mario Bunge'], respuestaCorrecta: 2 },
-            { id: 's1-2', pregunta: '¿Qué significa CONICET?', opciones: ['Consejo Nacional de Investigaciones Científicas y Técnicas', 'Centro Nacional de Investigación Científica', 'Comisión Nacional de Investigación', 'Consejo Nacional de Ciencia'], respuestaCorrecta: 0 },
-            { id: 's1-3', pregunta: '¿Qué científico argentino desarrolló la técnica de los anticuerpos monoclonales?', opciones: ['Luis Leloir', 'César Milstein', 'Bernardo Houssay', 'René Favaloro'], respuestaCorrecta: 1 },
-            { id: 's1-4', pregunta: '¿En qué año se fundó el CONICET?', opciones: ['1956', '1958', '1960', '1962'], respuestaCorrecta: 1 },
-            { id: 's1-5', pregunta: '¿Qué médico argentino desarrolló la técnica del bypass coronario?', opciones: ['René Favaloro', 'Luis Agote', 'Salvador Mazza', 'Ramón Carrillo'], respuestaCorrecta: 0 }
+            { id: 's1-1', pregunta: '¿Qué significa CONICET?', opciones: ['Consejo Nacional de Investigaciones Científicas y Técnicas', 'Centro Nacional de Investigación Científica', 'Comisión Nacional de Investigación', 'Consejo Nacional de Ciencia'], respuestaCorrecta: 0 },
+            { id: 's1-2', pregunta: '¿Qué médico argentino desarrolló la técnica del bypass coronario?', opciones: ['René Favaloro', 'Luis Agote', 'Salvador Mazza', 'Ramón Carrillo'], respuestaCorrecta: 0 },
+            { id: 's1-3', pregunta: '¿Quién fue el primer argentino en ganar un Premio Nobel en Ciencias?', opciones: ['Luis Federico Leloir', 'César Milstein', 'Bernardo Houssay', 'Mario Bunge'], respuestaCorrecta: 2 },
+            { id: 's1-4', pregunta: '¿Qué científico argentino desarrolló la técnica de los anticuerpos monoclonales?', opciones: ['Luis Leloir', 'César Milstein', 'Bernardo Houssay', 'René Favaloro'], respuestaCorrecta: 1 },
+            { id: 's1-5', pregunta: '¿En qué año se fundó el CONICET?', opciones: ['1956', '1958', '1960', '1962'], respuestaCorrecta: 1 },
+            { id: 's1-6', pregunta: '¿Qué Premio Nobel ganó Bernardo Houssay?', opciones: ['Medicina', 'Química', 'Física', 'Economía'], respuestaCorrecta: 0 }
         ]
     },
     2: {
@@ -93,50 +99,57 @@ const questions = {
             { id: 'd2-1', pregunta: '¿En qué año se fundó el Club Atlético River Plate?', opciones: ['1898', '1901', '1905', '1910'], respuestaCorrecta: 1 },
             { id: 'd2-2', pregunta: '¿Cuántos goles hizo Diego Maradona en la Copa del Mundo 1986?', opciones: ['4', '5', '6', '7'], respuestaCorrecta: 1 },
             { id: 'd2-3', pregunta: '¿Qué tenista argentino ganó el Abierto de Estados Unidos en 2009?', opciones: ['David Nalbandian', 'Juan Martín del Potro', 'Guillermo Coria', 'Gastón Gaudio'], respuestaCorrecta: 1 },
-            { id: 'd2-4', pregunta: '¿En qué deporte se destacó Emanuel Ginóbili?', opciones: ['Fútbol', 'Básquet', 'Tenis', 'Vóley'], respuestaCorrecta: 1 },
-            { id: 'd2-5', pregunta: '¿Qué equipo ganó la Copa Libertadores 2018?', opciones: ['Boca Juniors', 'River Plate', 'Racing', 'Independiente'], respuestaCorrecta: 1 }
+            { id: 'd2-4', pregunta: '¿Qué equipo ganó la Copa Libertadores 2018?', opciones: ['Boca Juniors', 'River Plate', 'Racing', 'Independiente'], respuestaCorrecta: 1 },
+            { id: 'd2-5', pregunta: '¿Cuántas veces ganó Argentina la Copa América hasta 2021?', opciones: ['13 veces', '15 veces', '17 veces', '19 veces'], respuestaCorrecta: 1 },
+            { id: 'd2-6', pregunta: '¿Qué boxeador argentino fue campeón mundial en peso mediano?', opciones: ['Carlos Monzón', 'Sergio Maravilla Martínez', 'Lucas Matthysse', 'Marcos Maidana'], respuestaCorrecta: 0 }
         ],
         historia: [
-            { id: 'h2-1', pregunta: '¿Quién fue el creador de la bandera argentina?', opciones: ['José de San Martín', 'Manuel Belgrano', 'Mariano Moreno', 'Bernardino Rivadavia'], respuestaCorrecta: 1 },
-            { id: 'h2-2', pregunta: '¿En qué batalla San Martín cruzó los Andes?', opciones: ['Batalla de Chacabuco', 'Batalla de Maipú', 'Batalla de San Lorenzo', 'Batalla de Salta'], respuestaCorrecta: 0 },
-            { id: 'h2-3', pregunta: '¿Qué presidente argentino fue conocido como "El Restaurador"?', opciones: ['Juan Manuel de Rosas', 'Bartolomé Mitre', 'Domingo Sarmiento', 'Julio Argentino Roca'], respuestaCorrecta: 0 },
-            { id: 'h2-4', pregunta: '¿En qué año se sancionó la Ley Sáenz Peña (voto secreto)?', opciones: ['1910', '1912', '1914', '1916'], respuestaCorrecta: 1 },
-            { id: 'h2-5', pregunta: '¿Quién fue el primer presidente elegido por voto popular en Argentina?', opciones: ['Hipólito Yrigoyen', 'Marcelo T. de Alvear', 'Julio Argentino Roca', 'Bartolomé Mitre'], respuestaCorrecta: 0 }
+            { id: 'h2-1', pregunta: '¿En qué batalla San Martín cruzó los Andes?', opciones: ['Batalla de Chacabuco', 'Batalla de Maipú', 'Batalla de San Lorenzo', 'Batalla de Salta'], respuestaCorrecta: 0 },
+            { id: 'h2-2', pregunta: '¿Qué presidente argentino fue conocido como "El Restaurador"?', opciones: ['Juan Manuel de Rosas', 'Bartolomé Mitre', 'Domingo Sarmiento', 'Julio Argentino Roca'], respuestaCorrecta: 0 },
+            { id: 'h2-3', pregunta: '¿En qué año se sancionó la Ley Sáenz Peña (voto secreto)?', opciones: ['1910', '1912', '1914', '1916'], respuestaCorrecta: 1 },
+            { id: 'h2-4', pregunta: '¿Quién fue el primer presidente elegido por voto popular en Argentina?', opciones: ['Hipólito Yrigoyen', 'Marcelo T. de Alvear', 'Julio Argentino Roca', 'Bartolomé Mitre'], respuestaCorrecta: 0 },
+            { id: 'h2-5', pregunta: '¿Quién fue el primer presidente constitucional de Argentina?', opciones: ['Bernardino Rivadavia', 'Juan Manuel de Rosas', 'Bartolomé Mitre', 'Domingo Faustino Sarmiento'], respuestaCorrecta: 0 },
+            { id: 'h2-6', pregunta: '¿En qué año se sancionó la Constitución Nacional argentina?', opciones: ['1850', '1853', '1856', '1860'], respuestaCorrecta: 1 }
         ],
         musica: [
             { id: 'm2-1', pregunta: '¿Qué álbum de Soda Stereo fue lanzado en 1990?', opciones: ['Canción Animal', 'Dynamo', 'Sueño Stereo', 'Signos'], respuestaCorrecta: 0 },
             { id: 'm2-2', pregunta: '¿Quién compuso "Adiós Nonino"?', opciones: ['Astor Piazzolla', 'Carlos Gardel', 'Aníbal Troilo', 'Osvaldo Pugliese'], respuestaCorrecta: 0 },
             { id: 'm2-3', pregunta: '¿Qué banda argentina tiene el álbum "Bocanada"?', opciones: ['Soda Stereo', 'Babasónicos', 'Gustavo Cerati', 'Los Fabulosos Cadillacs'], respuestaCorrecta: 2 },
             { id: 'm2-4', pregunta: '¿Quién es conocido como "El Negro" Fontova?', opciones: ['Fito Páez', 'Charly García', 'León Gieco', 'Mercedes Sosa'], respuestaCorrecta: 2 },
-            { id: 'm2-5', pregunta: '¿Qué cantante argentina es conocida como "La Negra"?', opciones: ['Mercedes Sosa', 'Violeta Rivas', 'Palito Ortega', 'Sandro'], respuestaCorrecta: 0 }
+            { id: 'm2-5', pregunta: '¿Quién es el autor de "Sólo le pido a Dios"?', opciones: ['León Gieco', 'Mercedes Sosa', 'Fito Páez', 'Charly García'], respuestaCorrecta: 0 },
+            { id: 'm2-6', pregunta: '¿Qué álbum de Charly García fue lanzado en 1982?', opciones: ['Yendo de la cama al living', 'Clics modernos', 'Piano bar', 'Parte de la religión'], respuestaCorrecta: 1 }
         ],
         geografia: [
             { id: 'g2-1', pregunta: '¿Cuál es la provincia más grande de Argentina?', opciones: ['Santa Cruz', 'Buenos Aires', 'Chubut', 'Río Negro'], respuestaCorrecta: 0 },
             { id: 'g2-2', pregunta: '¿Qué ciudad es conocida como "La Docta"?', opciones: ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza'], respuestaCorrecta: 1 },
             { id: 'g2-3', pregunta: '¿En qué provincia se encuentra el Parque Nacional Iguazú?', opciones: ['Misiones', 'Corrientes', 'Entre Ríos', 'Formosa'], respuestaCorrecta: 0 },
             { id: 'g2-4', pregunta: '¿Cuál es el río más largo de Argentina?', opciones: ['Río Paraná', 'Río Uruguay', 'Río Colorado', 'Río Negro'], respuestaCorrecta: 0 },
-            { id: 'g2-5', pregunta: '¿Qué ciudad es la capital de la provincia de Mendoza?', opciones: ['San Rafael', 'Mendoza', 'Godoy Cruz', 'Luján de Cuyo'], respuestaCorrecta: 1 }
+            { id: 'g2-5', pregunta: '¿Qué ciudad es la capital de la provincia de Mendoza?', opciones: ['San Rafael', 'Mendoza', 'Godoy Cruz', 'Luján de Cuyo'], respuestaCorrecta: 1 },
+            { id: 'g2-6', pregunta: '¿En qué provincia se encuentra la Península Valdés?', opciones: ['Chubut', 'Santa Cruz', 'Río Negro', 'Neuquén'], respuestaCorrecta: 0 }
         ],
         cine: [
             { id: 'c2-1', pregunta: '¿Quién dirigió "Nueve reinas"?', opciones: ['Fabian Bielinsky', 'Pablo Trapero', 'Juan José Campanella', 'Damián Szifrón'], respuestaCorrecta: 0 },
-            { id: 'c2-2', pregunta: '¿Qué película argentina ganó el Oscar en 2009?', opciones: ['El secreto de sus ojos', 'La historia oficial', 'Relatos salvajes', 'Nueve reinas'], respuestaCorrecta: 0 },
-            { id: 'c2-3', pregunta: '¿Quién interpretó a "El Perro" Santillán en "El lado oscuro del corazón"?', opciones: ['Ricardo Darín', 'Federico Luppi', 'Darío Grandinetti', 'Guillermo Francella'], respuestaCorrecta: 1 },
-            { id: 'c2-4', pregunta: '¿Qué programa de TV fue creado por Marcelo Tinelli?', opciones: ['ShowMatch', 'Susana Giménez', 'CQC', 'Los profesionales de siempre'], respuestaCorrecta: 0 },
-            { id: 'c2-5', pregunta: '¿Quién dirigió "Zama"?', opciones: ['Lucrecia Martel', 'Pablo Trapero', 'Damián Szifrón', 'Lisandro Alonso'], respuestaCorrecta: 0 }
+            { id: 'c2-2', pregunta: '¿Quién interpretó a "El Perro" Santillán en "El lado oscuro del corazón"?', opciones: ['Ricardo Darín', 'Federico Luppi', 'Darío Grandinetti', 'Guillermo Francella'], respuestaCorrecta: 1 },
+            { id: 'c2-3', pregunta: '¿Quién dirigió "Zama"?', opciones: ['Lucrecia Martel', 'Pablo Trapero', 'Damián Szifrón', 'Lisandro Alonso'], respuestaCorrecta: 0 },
+            { id: 'c2-4', pregunta: '¿Quién dirigió "La Ciénaga"?', opciones: ['Lucrecia Martel', 'Pablo Trapero', 'Daniel Burman', 'Adrián Caetano'], respuestaCorrecta: 0 },
+            { id: 'c2-5', pregunta: '¿Quién interpretó a "El Turco" en "Nueve reinas"?', opciones: ['Ricardo Darín', 'Gastón Pauls', 'Leticia Bredice', 'Pablo Echarri'], respuestaCorrecta: 1 },
+            { id: 'c2-6', pregunta: '¿Quién dirigió "La historia oficial"?', opciones: ['Luis Puenzo', 'Héctor Olivera', 'Fernando Solanas', 'María Luisa Bemberg'], respuestaCorrecta: 0 }
         ],
         tradiciones: [
             { id: 't2-1', pregunta: '¿Qué se dice tradicionalmente cuando se comparte el mate?', opciones: ['"Salud"', '"Gracias"', '"Buen provecho"', 'No se dice nada'], respuestaCorrecta: 1 },
             { id: 't2-2', pregunta: '¿En qué provincia se celebra la Fiesta Nacional de la Vendimia?', opciones: ['San Juan', 'Mendoza', 'La Rioja', 'Catamarca'], respuestaCorrecta: 1 },
-            { id: 't2-3', pregunta: '¿Qué comida típica se come el 25 de mayo?', opciones: ['Asado', 'Locro', 'Empanadas', 'Pastelitos'], respuestaCorrecta: 1 },
-            { id: 't2-4', pregunta: '¿Qué significa "che" en el lenguaje argentino?', opciones: ['Amigo', 'Interjección para llamar atención', 'Ambos', 'Ninguno'], respuestaCorrecta: 2 },
-            { id: 't2-5', pregunta: '¿Qué día se celebra el Día del Gaucho?', opciones: ['10 de noviembre', '6 de diciembre', '20 de junio', '9 de julio'], respuestaCorrecta: 1 }
+            { id: 't2-3', pregunta: '¿Qué significa "che" en el lenguaje argentino?', opciones: ['Amigo', 'Interjección para llamar atención', 'Ambos', 'Ninguno'], respuestaCorrecta: 2 },
+            { id: 't2-4', pregunta: '¿Qué día se celebra el Día del Gaucho?', opciones: ['10 de noviembre', '6 de diciembre', '20 de junio', '9 de julio'], respuestaCorrecta: 1 },
+            { id: 't2-5', pregunta: '¿Qué significa "quilombo" en el lunfardo argentino?', opciones: ['Confusión o lío', 'Lugar de baile', 'Comida típica', 'Ninguno'], respuestaCorrecta: 0 },
+            { id: 't2-6', pregunta: '¿En qué provincia se celebra la Fiesta Nacional del Sol?', opciones: ['San Juan', 'Mendoza', 'La Rioja', 'Catamarca'], respuestaCorrecta: 0 }
         ],
         ciencia: [
-            { id: 's2-1', pregunta: '¿Qué Premio Nobel ganó Bernardo Houssay?', opciones: ['Medicina', 'Química', 'Física', 'Economía'], respuestaCorrecta: 0 },
-            { id: 's2-2', pregunta: '¿En qué año ganó el Nobel Luis Leloir?', opciones: ['1968', '1970', '1972', '1974'], respuestaCorrecta: 1 },
-            { id: 's2-3', pregunta: '¿Qué descubrió Luis Leloir?', opciones: ['Los anticuerpos monoclonales', 'El metabolismo de los carbohidratos', 'La insulina', 'El bypass coronario'], respuestaCorrecta: 1 },
-            { id: 's2-4', pregunta: '¿Dónde realizó sus investigaciones más importantes René Favaloro?', opciones: ['Argentina', 'Estados Unidos', 'Francia', 'Inglaterra'], respuestaCorrecta: 1 },
-            { id: 's2-5', pregunta: '¿Qué científico argentino trabajó con la estructura del ADN?', opciones: ['Luis Leloir', 'César Milstein', 'Mario Bunge', 'Ninguno'], respuestaCorrecta: 1 }
+            { id: 's2-1', pregunta: '¿En qué año ganó el Nobel Luis Leloir?', opciones: ['1968', '1970', '1972', '1974'], respuestaCorrecta: 1 },
+            { id: 's2-2', pregunta: '¿Qué descubrió Luis Leloir?', opciones: ['Los anticuerpos monoclonales', 'El metabolismo de los carbohidratos', 'La insulina', 'El bypass coronario'], respuestaCorrecta: 1 },
+            { id: 's2-3', pregunta: '¿Dónde realizó sus investigaciones más importantes René Favaloro?', opciones: ['Argentina', 'Estados Unidos', 'Francia', 'Inglaterra'], respuestaCorrecta: 1 },
+            { id: 's2-4', pregunta: '¿Qué científico argentino trabajó con la estructura del ADN?', opciones: ['Luis Leloir', 'César Milstein', 'Mario Bunge', 'Ninguno'], respuestaCorrecta: 1 },
+            { id: 's2-5', pregunta: '¿En qué año ganó el Nobel César Milstein?', opciones: ['1982', '1984', '1986', '1988'], respuestaCorrecta: 1 },
+            { id: 's2-6', pregunta: '¿Qué Premio Nobel ganó César Milstein?', opciones: ['Medicina', 'Química', 'Física', 'Economía'], respuestaCorrecta: 0 }
         ]
     },
     3: {
@@ -145,49 +158,56 @@ const questions = {
             { id: 'd3-2', pregunta: '¿Cuántos títulos de Primera División tiene Racing Club?', opciones: ['16', '17', '18', '19'], respuestaCorrecta: 2 },
             { id: 'd3-3', pregunta: '¿Qué boxeador argentino fue campeón mundial en peso pesado?', opciones: ['Carlos Monzón', 'Sergio Maravilla Martínez', 'Ninguno', 'Lucas Matthysse'], respuestaCorrecta: 2 },
             { id: 'd3-4', pregunta: '¿En qué año ganó Argentina la medalla de oro en básquet en los Juegos Olímpicos?', opciones: ['2000', '2004', '2008', 'Nunca'], respuestaCorrecta: 3 },
-            { id: 'd3-5', pregunta: '¿Qué tenista argentino llegó a la final de Wimbledon?', opciones: ['David Nalbandian', 'Guillermo Coria', 'Gastón Gaudio', 'Juan Martín del Potro'], respuestaCorrecta: 0 }
+            { id: 'd3-5', pregunta: '¿Qué tenista argentino llegó a la final de Wimbledon?', opciones: ['David Nalbandian', 'Guillermo Coria', 'Gastón Gaudio', 'Juan Martín del Potro'], respuestaCorrecta: 0 },
+            { id: 'd3-6', pregunta: '¿Cuántos goles anotó Lionel Messi en su primera Copa del Mundo?', opciones: ['0', '1', '2', '3'], respuestaCorrecta: 1 }
         ],
         historia: [
             { id: 'h3-1', pregunta: '¿Quién fue el primer gobernador de Buenos Aires después de la Revolución de Mayo?', opciones: ['Cornelio Saavedra', 'Mariano Moreno', 'Manuel Belgrano', 'Juan José Castelli'], respuestaCorrecta: 0 },
-            { id: 'h3-2', pregunta: '¿En qué año se sancionó la Constitución Nacional argentina?', opciones: ['1850', '1853', '1856', '1860'], respuestaCorrecta: 1 },
-            { id: 'h3-3', pregunta: '¿Qué batalla ganó San Martín en Chile?', opciones: ['Chacabuco', 'Maipú', 'San Lorenzo', 'Cancha Rayada'], respuestaCorrecta: 1 },
-            { id: 'h3-4', pregunta: '¿Quién fue conocido como "El Padre de la Patria"?', opciones: ['José de San Martín', 'Manuel Belgrano', 'Mariano Moreno', 'Bernardino Rivadavia'], respuestaCorrecta: 0 },
-            { id: 'h3-5', pregunta: '¿En qué año se fundó la Universidad de Buenos Aires?', opciones: ['1818', '1821', '1824', '1827'], respuestaCorrecta: 1 }
+            { id: 'h3-2', pregunta: '¿Quién fue conocido como "El Padre de la Patria"?', opciones: ['José de San Martín', 'Manuel Belgrano', 'Mariano Moreno', 'Bernardino Rivadavia'], respuestaCorrecta: 0 },
+            { id: 'h3-3', pregunta: '¿En qué año se fundó la Universidad de Buenos Aires?', opciones: ['1818', '1821', '1824', '1827'], respuestaCorrecta: 1 },
+            { id: 'h3-4', pregunta: '¿Qué batalla ganó San Martín en Chile?', opciones: ['Chacabuco', 'Maipú', 'San Lorenzo', 'Cancha Rayada'], respuestaCorrecta: 1 },
+            { id: 'h3-5', pregunta: '¿Quién fue el creador del periódico "La Gazeta de Buenos Ayres"?', opciones: ['Mariano Moreno', 'Manuel Belgrano', 'Juan José Castelli', 'Cornelio Saavedra'], respuestaCorrecta: 0 },
+            { id: 'h3-6', pregunta: '¿En qué año se produjo la "Semana Trágica" en Buenos Aires?', opciones: ['1917', '1919', '1921', '1923'], respuestaCorrecta: 1 }
         ],
         musica: [
-            { id: 'm3-1', pregunta: '¿Qué álbum de Charly García fue lanzado en 1982?', opciones: ['Yendo de la cama al living', 'Clics modernos', 'Piano bar', 'Parte de la religión'], respuestaCorrecta: 1 },
-            { id: 'm3-2', pregunta: '¿Quién compuso "Balada para un loco"?', opciones: ['Astor Piazzolla', 'Horacio Ferrer', 'Aníbal Troilo', 'Osvaldo Pugliese'], respuestaCorrecta: 0 },
-            { id: 'm3-3', pregunta: '¿Qué banda tiene el álbum "Ritmo y Blues" de 1993?', opciones: ['Los Fabulosos Cadillacs', 'Babasónicos', 'Divididos', 'La Renga'], respuestaCorrecta: 0 },
-            { id: 'm3-4', pregunta: '¿Quién es el autor de "Sólo le pido a Dios"?', opciones: ['León Gieco', 'Mercedes Sosa', 'Fito Páez', 'Charly García'], respuestaCorrecta: 0 },
-            { id: 'm3-5', pregunta: '¿Qué cantante es conocido como "El Flaco"?', opciones: ['Luis Alberto Spinetta', 'Gustavo Cerati', 'Charly García', 'Fito Páez'], respuestaCorrecta: 0 }
+            { id: 'm3-1', pregunta: '¿Quién compuso "Balada para un loco"?', opciones: ['Astor Piazzolla', 'Horacio Ferrer', 'Aníbal Troilo', 'Osvaldo Pugliese'], respuestaCorrecta: 0 },
+            { id: 'm3-2', pregunta: '¿Qué banda tiene el álbum "Ritmo y Blues" de 1993?', opciones: ['Los Fabulosos Cadillacs', 'Babasónicos', 'Divididos', 'La Renga'], respuestaCorrecta: 0 },
+            { id: 'm3-3', pregunta: '¿Qué cantante es conocido como "El Flaco"?', opciones: ['Luis Alberto Spinetta', 'Gustavo Cerati', 'Charly García', 'Fito Páez'], respuestaCorrecta: 0 },
+            { id: 'm3-4', pregunta: '¿En qué año se formó la banda Soda Stereo?', opciones: ['1980', '1982', '1984', '1986'], respuestaCorrecta: 1 },
+            { id: 'm3-5', pregunta: '¿Qué álbum de Gustavo Cerati fue lanzado en 1999?', opciones: ['Bocanada', 'Siempre es hoy', 'Ahí vamos', 'Fuerza natural'], respuestaCorrecta: 0 },
+            { id: 'm3-6', pregunta: '¿Quién fue el compositor de "La cumparsita"?', opciones: ['Gerardo Matos Rodríguez', 'Carlos Gardel', 'Astor Piazzolla', 'Aníbal Troilo'], respuestaCorrecta: 0 }
         ],
         geografia: [
-            { id: 'g3-1', pregunta: '¿Cuál es la ciudad más austral del mundo?', opciones: ['Ushuaia', 'Río Gallegos', 'Punta Arenas', 'El Calafate'], respuestaCorrecta: 0 },
-            { id: 'g3-2', pregunta: '¿En qué provincia se encuentra el Cerro de los Siete Colores?', opciones: ['Jujuy', 'Salta', 'Catamarca', 'Tucumán'], respuestaCorrecta: 0 },
-            { id: 'g3-3', pregunta: '¿Qué lago comparten Argentina y Chile?', opciones: ['Lago Nahuel Huapi', 'Lago Argentino', 'Lago Buenos Aires', 'Lago Viedma'], respuestaCorrecta: 2 },
-            { id: 'g3-4', pregunta: '¿Cuál es la segunda ciudad más poblada de Argentina?', opciones: ['Córdoba', 'Rosario', 'Mendoza', 'La Plata'], respuestaCorrecta: 0 },
-            { id: 'g3-5', pregunta: '¿En qué provincia se encuentra la Península Valdés?', opciones: ['Chubut', 'Santa Cruz', 'Río Negro', 'Neuquén'], respuestaCorrecta: 0 }
+            { id: 'g3-1', pregunta: '¿En qué provincia se encuentra el Cerro de los Siete Colores?', opciones: ['Jujuy', 'Salta', 'Catamarca', 'Tucumán'], respuestaCorrecta: 0 },
+            { id: 'g3-2', pregunta: '¿Qué lago comparten Argentina y Chile?', opciones: ['Lago Nahuel Huapi', 'Lago Argentino', 'Lago Buenos Aires', 'Lago Viedma'], respuestaCorrecta: 2 },
+            { id: 'g3-3', pregunta: '¿Cuál es la segunda ciudad más poblada de Argentina?', opciones: ['Córdoba', 'Rosario', 'Mendoza', 'La Plata'], respuestaCorrecta: 0 },
+            { id: 'g3-4', pregunta: '¿En qué provincia se encuentra el Parque Nacional Los Glaciares?', opciones: ['Chubut', 'Santa Cruz', 'Tierra del Fuego', 'Neuquén'], respuestaCorrecta: 1 },
+            { id: 'g3-5', pregunta: '¿Cuál es la altura exacta del Aconcagua?', opciones: ['6.960 metros', '6.962 metros', '6.964 metros', '6.966 metros'], respuestaCorrecta: 0 },
+            { id: 'g3-6', pregunta: '¿Qué provincia argentina limita con Paraguay, Brasil y Uruguay?', opciones: ['Misiones', 'Corrientes', 'Formosa', 'Ninguna'], respuestaCorrecta: 0 }
         ],
         cine: [
-            { id: 'c3-1', pregunta: '¿Quién dirigió "La Ciénaga"?', opciones: ['Lucrecia Martel', 'Pablo Trapero', 'Daniel Burman', 'Adrián Caetano'], respuestaCorrecta: 0 },
-            { id: 'c3-2', pregunta: '¿Qué película de Ricardo Darín ganó el Goya a Mejor Película Iberoamericana?', opciones: ['El secreto de sus ojos', 'Nueve reinas', 'Relatos salvajes', 'La odisea de los giles'], respuestaCorrecta: 3 },
-            { id: 'c3-3', pregunta: '¿Quién interpretó a "El Turco" en "Nueve reinas"?', opciones: ['Ricardo Darín', 'Gastón Pauls', 'Leticia Bredice', 'Pablo Echarri'], respuestaCorrecta: 1 },
-            { id: 'c3-4', pregunta: '¿Qué programa de TV fue conocido por "¿Quién quiere ser millonario?"?', opciones: ['ShowMatch', 'Susana Giménez', 'El show de Videomatch', 'No hay programa así'], respuestaCorrecta: 0 },
-            { id: 'c3-5', pregunta: '¿Quién dirigió "La historia oficial"?', opciones: ['Luis Puenzo', 'Héctor Olivera', 'Fernando Solanas', 'María Luisa Bemberg'], respuestaCorrecta: 0 }
+            { id: 'c3-1', pregunta: '¿Qué película de Ricardo Darín ganó el Goya a Mejor Película Iberoamericana?', opciones: ['El secreto de sus ojos', 'Nueve reinas', 'Relatos salvajes', 'La odisea de los giles'], respuestaCorrecta: 3 },
+            { id: 'c3-2', pregunta: '¿En qué año se estrenó "La historia oficial"?', opciones: ['1983', '1985', '1987', '1989'], respuestaCorrecta: 1 },
+            { id: 'c3-3', pregunta: '¿Quién dirigió "El lado oscuro del corazón"?', opciones: ['Eliseo Subiela', 'Adrián Caetano', 'Pablo Trapero', 'Daniel Burman'], respuestaCorrecta: 0 },
+            { id: 'c3-4', pregunta: '¿Qué película argentina ganó el premio a Mejor Guión en Cannes?', opciones: ['Relatos salvajes', 'El clan', 'Zama', 'La ciénaga'], respuestaCorrecta: 0 },
+            { id: 'c3-5', pregunta: '¿Quién interpretó a "El Perro" en "El lado oscuro del corazón"?', opciones: ['Ricardo Darín', 'Federico Luppi', 'Darío Grandinetti', 'Guillermo Francella'], respuestaCorrecta: 1 },
+            { id: 'c3-6', pregunta: '¿En qué año se estrenó "Nueve reinas"?', opciones: ['1998', '2000', '2002', '2004'], respuestaCorrecta: 1 }
         ],
         tradiciones: [
-            { id: 't3-1', pregunta: '¿Qué significa "quilombo" en el lunfardo argentino?', opciones: ['Confusión o lío', 'Lugar de baile', 'Comida típica', 'Ninguno'], respuestaCorrecta: 0 },
-            { id: 't3-2', pregunta: '¿En qué provincia se celebra la Fiesta Nacional del Sol?', opciones: ['San Juan', 'Mendoza', 'La Rioja', 'Catamarca'], respuestaCorrecta: 0 },
-            { id: 't3-3', pregunta: '¿Qué se come tradicionalmente en Navidad en Argentina?', opciones: ['Asado', 'Pavo', 'Vitel toné', 'Todas las anteriores'], respuestaCorrecta: 3 },
-            { id: 't3-4', pregunta: '¿Qué significa "boludo" en el lenguaje argentino coloquial?', opciones: ['Solo insulto', 'Puede ser amigable o insulto', 'Solo amigable', 'Ninguno'], respuestaCorrecta: 1 },
-            { id: 't3-5', pregunta: '¿Qué día se celebra el Día de la Pachamama?', opciones: ['1 de agosto', '15 de agosto', '1 de septiembre', '15 de septiembre'], respuestaCorrecta: 0 }
+            { id: 't3-1', pregunta: '¿Qué significa "boludo" en el lenguaje argentino coloquial?', opciones: ['Solo insulto', 'Puede ser amigable o insulto', 'Solo amigable', 'Ninguno'], respuestaCorrecta: 1 },
+            { id: 't3-2', pregunta: '¿Qué se come tradicionalmente en Navidad en Argentina?', opciones: ['Asado', 'Pavo', 'Vitel toné', 'Todas las anteriores'], respuestaCorrecta: 3 },
+            { id: 't3-3', pregunta: '¿Qué día se celebra el Día de la Pachamama?', opciones: ['1 de agosto', '15 de agosto', '1 de septiembre', '15 de septiembre'], respuestaCorrecta: 0 },
+            { id: 't3-4', pregunta: '¿Qué significa "laburar" en el lunfardo argentino?', opciones: ['Trabajar', 'Estudiar', 'Descansar', 'Comer'], respuestaCorrecta: 0 },
+            { id: 't3-5', pregunta: '¿En qué provincia se celebra la Fiesta Nacional de la Vendimia?', opciones: ['San Juan', 'Mendoza', 'La Rioja', 'Catamarca'], respuestaCorrecta: 1 },
+            { id: 't3-6', pregunta: '¿Qué significa "chamuyar" en el lunfardo argentino?', opciones: ['Hablar mucho', 'Engañar con palabras', 'Cocinar', 'Bailar'], respuestaCorrecta: 1 }
         ],
         ciencia: [
-            { id: 's3-1', pregunta: '¿Qué Premio Nobel ganó César Milstein?', opciones: ['Medicina', 'Química', 'Física', 'Economía'], respuestaCorrecta: 0 },
-            { id: 's3-2', pregunta: '¿En qué año ganó el Nobel César Milstein?', opciones: ['1982', '1984', '1986', '1988'], respuestaCorrecta: 1 },
+            { id: 's3-1', pregunta: '¿Quién fue el primer director del CONICET?', opciones: ['Bernardo Houssay', 'Luis Leloir', 'César Milstein', 'René Favaloro'], respuestaCorrecta: 0 },
+            { id: 's3-2', pregunta: '¿Qué médico argentino desarrolló la técnica de la transfusión de sangre?', opciones: ['Luis Agote', 'René Favaloro', 'Salvador Mazza', 'Ramón Carrillo'], respuestaCorrecta: 0 },
             { id: 's3-3', pregunta: '¿Qué institución científica argentina es la más importante?', opciones: ['INTA', 'CONICET', 'INTI', 'CNEA'], respuestaCorrecta: 1 },
-            { id: 's3-4', pregunta: '¿Quién fue el primer director del CONICET?', opciones: ['Bernardo Houssay', 'Luis Leloir', 'César Milstein', 'René Favaloro'], respuestaCorrecta: 0 },
-            { id: 's3-5', pregunta: '¿Qué médico argentino desarrolló la técnica de la transfusión de sangre?', opciones: ['Luis Agote', 'René Favaloro', 'Salvador Mazza', 'Ramón Carrillo'], respuestaCorrecta: 0 }
+            { id: 's3-4', pregunta: '¿En qué campo científico se destacó Luis Leloir?', opciones: ['Medicina', 'Química', 'Física', 'Biología'], respuestaCorrecta: 1 },
+            { id: 's3-5', pregunta: '¿Qué científico argentino trabajó en el desarrollo de la vacuna contra la fiebre amarilla?', opciones: ['Salvador Mazza', 'Ramón Carrillo', 'Luis Agote', 'Bernardo Houssay'], respuestaCorrecta: 0 },
+            { id: 's3-6', pregunta: '¿En qué año ganó el Premio Nobel Bernardo Houssay?', opciones: ['1945', '1947', '1949', '1951'], respuestaCorrecta: 1 }
         ]
     }
 };
