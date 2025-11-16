@@ -627,16 +627,19 @@ function startQuestion() {
         q => !gameState.usedQuestions.has(q.id)
     );
     
+    let randomQuestion;
     if (availableQuestions.length === 0) {
         // Si no hay más preguntas, reutilizar
         const allQuestions = questions[level][category];
-        const randomQuestion = allQuestions[Math.floor(Math.random() * allQuestions.length)];
-        displayQuestion(randomQuestion, category);
+        randomQuestion = allQuestions[Math.floor(Math.random() * allQuestions.length)];
     } else {
-        const randomQuestion = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+        randomQuestion = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
         gameState.usedQuestions.add(randomQuestion.id);
-        displayQuestion(randomQuestion, category);
     }
+    
+    // Guardar la pregunta actual en el estado del juego
+    gameState.currentQuestionObj = randomQuestion;
+    displayQuestion(randomQuestion, category);
 }
 
 // === CAMBIO 2: NUEVA FUNCIÓN PARA MEZCLAR OPCIONES ===
@@ -707,10 +710,53 @@ function startTimer() {
         
         if (gameState.timeLeft <= 0) {
             clearInterval(gameState.timer);
-            checkAnswer(-1, -1); // Respuesta incorrecta por tiempo
+            showTimeoutModal(); // Mostrar modal de tiempo agotado
         }
     }, 1000);
 }
+
+function showTimeoutModal() {
+    // Detener el temporizador si aún está corriendo
+    if (gameState.timer) {
+        clearInterval(gameState.timer);
+    }
+    
+    // Mostrar el modal de tiempo agotado
+    document.getElementById('timeout-modal').classList.add('active');
+}
+
+// Manejar el botón del modal de tiempo agotado
+document.getElementById('timeout-ok-btn').addEventListener('click', () => {
+    // Cerrar el modal
+    document.getElementById('timeout-modal').classList.remove('active');
+    
+    // Marcar la pregunta como usada si aún no lo está
+    if (gameState.currentQuestionObj && !gameState.usedQuestions.has(gameState.currentQuestionObj.id)) {
+        gameState.usedQuestions.add(gameState.currentQuestionObj.id);
+    }
+    
+    // Perder una vida
+    loseLife();
+    
+    // Incrementar el contador de preguntas
+    gameState.currentQuestion++;
+    
+    // Verificar si se completó el nivel o si se quedó sin vidas
+    if (gameState.lives <= 0) {
+        showGameOver();
+    } else if (gameState.currentQuestion > 6) {
+        // Completó las 6 preguntas del nivel
+        if (gameState.correctAnswers >= 4) {
+            showLevelComplete();
+        } else {
+            showGameOver();
+        }
+    } else {
+        // Volver a la pantalla de la ruleta
+        updateGameHeader();
+        showScreen('game-screen');
+    }
+});
 
 function checkAnswer(selectedIndex, correctIndex) {
     clearInterval(gameState.timer);
