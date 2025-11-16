@@ -792,7 +792,7 @@ function checkAnswer(selectedIndex, correctIndex) {
             },
             {
                 message: 'CORRECTO',
-                image: 'mesi.png'
+                image: 'messi.png'
             }
         ];
         
