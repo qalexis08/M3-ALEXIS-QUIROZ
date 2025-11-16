@@ -807,7 +807,7 @@ function checkAnswer(selectedIndex, correctIndex) {
         // Alternar aleatoriamente entre dos mensajes e imágenes
         const incorrectOptions = [
             {
-                message: 'Respuesta incorrecta: si queres llorar, llorá',
+                message: 'INCORRECTO',
                 image: 'moria.png'
             },
             {
