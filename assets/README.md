@@ -17,3 +17,4 @@ El juego actualmente usa Web Audio API para generar sonidos dinámicamente, por 
 
 Las imágenes de los personajes (hincha.png, abuelita_mate.png, etc.) deben estar en la raíz del proyecto, no en esta carpeta, ya que el HTML las referencia directamente desde la raíz.
 
+
